@@ -2,6 +2,7 @@ import React from 'react';
 import Link from 'next/link';
 import { prisma } from '@/lib/prisma';
 import { ServiceCard } from '@/components/ServiceCard';
+import { Prisma } from '@prisma/client';
 import {
   Wrench,
   Sparkles,
@@ -17,7 +18,29 @@ import {
 
 export const revalidate = 0; // Dynamic data
 
-async function getLandingData() {
+export type LandingCategory = Prisma.CategoryGetPayload<{
+  include: {
+    _count: {
+      select: { services: true };
+    };
+  };
+}>;
+
+export type LandingService = Prisma.ServiceGetPayload<{
+  include: {
+    category: true;
+  };
+}>;
+
+interface LandingData {
+  categories: LandingCategory[];
+  featuredServices: LandingService[];
+  bookingCount: number;
+  servicesCount: number;
+  customersCount: number;
+}
+
+async function getLandingData(): Promise<LandingData> {
   try {
     const [categories, featuredServices, stats] = await Promise.all([
       prisma.category.findMany({
@@ -185,7 +208,7 @@ export default async function HomePage() {
           </div>
 
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
-            {categories.map((cat) => (
+            {categories.map((cat: LandingCategory) => (
               <Link
                 key={cat.id}
                 href={`/services?category=${cat.slug}`}
@@ -228,7 +251,7 @@ export default async function HomePage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {featuredServices.map((service) => (
+            {featuredServices.map((service: LandingService) => (
               <ServiceCard
                 key={service.id}
                 id={service.id}

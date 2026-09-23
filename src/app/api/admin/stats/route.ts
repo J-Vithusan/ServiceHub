@@ -12,7 +12,7 @@ export async function GET(request: NextRequest) {
       );
     }
 
-    // Run parallel queries for maximum performance
+    // Query stats and bookings with explicit typing
     const [
       totalBookings,
       activeServicesCount,
@@ -21,8 +21,6 @@ export async function GET(request: NextRequest) {
       confirmedCount,
       completedCount,
       cancelledCount,
-      recentBookings,
-      allCompletedBookings,
     ] = await Promise.all([
       prisma.booking.count(),
       prisma.service.count({ where: { status: 'ACTIVE' } }),
@@ -31,31 +29,34 @@ export async function GET(request: NextRequest) {
       prisma.booking.count({ where: { status: 'CONFIRMED' } }),
       prisma.booking.count({ where: { status: 'COMPLETED' } }),
       prisma.booking.count({ where: { status: 'CANCELLED' } }),
-      prisma.booking.findMany({
-        take: 6,
-        orderBy: { createdAt: 'desc' },
-        include: {
-          service: {
-            select: { name: true, price: true },
-          },
-          user: {
-            select: { name: true, email: true },
-          },
-        },
-      }),
-      prisma.booking.findMany({
-        where: {
-          status: { in: ['CONFIRMED', 'COMPLETED'] },
-        },
-        select: {
-          totalPrice: true,
-          bookingDate: true,
-        },
-      }),
     ]);
 
+    const recentBookings = await prisma.booking.findMany({
+      take: 6,
+      orderBy: { createdAt: 'desc' },
+      include: {
+        service: {
+          select: { name: true, price: true },
+        },
+        user: {
+          select: { name: true, email: true },
+        },
+      },
+    });
+
+    const allCompletedBookings = await prisma.booking.findMany({
+      where: {
+        status: { in: ['CONFIRMED', 'COMPLETED'] },
+      },
+      select: {
+        totalPrice: true,
+        bookingDate: true,
+      },
+    });
+
     const totalRevenue = allCompletedBookings.reduce(
-      (sum, b) => sum + (b.totalPrice || 0),
+      (sum: number, b: { totalPrice: number; bookingDate: Date }): number =>
+        sum + (b.totalPrice || 0),
       0
     );
 
