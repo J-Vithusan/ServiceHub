@@ -115,11 +115,6 @@ export function Footer() {
                   Register Account
                 </Link>
               </li>
-              <li>
-                <Link href="/admin/login" className="hover:text-amber-700 dark:hover:text-amber-400 transition">
-                  Admin Portal Gateway
-                </Link>
-              </li>
             </ul>
           </div>
 
