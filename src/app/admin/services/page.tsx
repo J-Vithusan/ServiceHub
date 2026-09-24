@@ -252,17 +252,17 @@ export default function AdminServicesPage() {
         {/* Header */}
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
           <div>
-            <h1 className="text-3xl font-black text-white tracking-tight">
+            <h1 className="text-3xl font-extrabold text-slate-900 dark:text-white tracking-tight">
               Manage Services Catalog
             </h1>
-            <p className="text-sm text-slate-400 mt-1">
+            <p className="text-sm text-slate-600 dark:text-slate-400 mt-1 font-medium">
               Add new offerings, adjust pricing, modify descriptions, and toggle availability.
             </p>
           </div>
 
           <button
             onClick={handleOpenAddModal}
-            className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl font-bold text-xs uppercase tracking-wider text-slate-950 bg-amber-400 hover:bg-amber-300 shadow-lg shadow-amber-500/20 transition w-fit"
+            className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl font-bold text-xs uppercase tracking-wider text-slate-950 bg-amber-400 hover:bg-amber-300 shadow-md shadow-amber-400/20 transition-all hover:scale-[1.02] active:scale-[0.98] w-fit cursor-pointer"
             id="add-service-button"
           >
             <Plus className="h-4 w-4" />
@@ -273,31 +273,31 @@ export default function AdminServicesPage() {
         {/* Toast Notification */}
         {toast && (
           <div
-            className={`p-4 rounded-2xl text-xs flex items-center gap-2.5 animate-in fade-in ${
+            className={`p-4 rounded-2xl text-xs flex items-center gap-2.5 animate-in fade-in shadow-xs ${
               toast.type === 'success'
-                ? 'bg-emerald-500/10 border border-emerald-500/30 text-emerald-300'
-                : 'bg-rose-500/10 border border-rose-500/30 text-rose-300'
+                ? 'bg-emerald-50 dark:bg-emerald-500/10 border border-emerald-200 dark:border-emerald-500/30 text-emerald-800 dark:text-emerald-300'
+                : 'bg-rose-50 dark:bg-rose-500/10 border border-rose-200 dark:border-rose-500/30 text-rose-800 dark:text-rose-300'
             }`}
           >
             {toast.type === 'success' ? (
-              <CheckCircle2 className="h-4 w-4 text-emerald-400" />
+              <CheckCircle2 className="h-4 w-4 text-emerald-600 dark:text-emerald-400" />
             ) : (
-              <AlertCircle className="h-4 w-4 text-rose-400" />
+              <AlertCircle className="h-4 w-4 text-rose-500 dark:text-rose-400" />
             )}
-            <span>{toast.text}</span>
+            <span className="font-medium">{toast.text}</span>
           </div>
         )}
 
         {/* Search & Filter Bar */}
-        <div className="flex flex-col sm:flex-row items-center gap-4 p-4 rounded-2xl bg-slate-900 border border-slate-800">
+        <div className="flex flex-col sm:flex-row items-center gap-4 p-4 rounded-2xl bg-white dark:bg-[#0f171a] border border-slate-200/90 dark:border-slate-800/80 shadow-xs">
           <div className="relative flex-1 w-full">
-            <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-400" />
+            <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-400 dark:text-slate-500" />
             <input
               type="text"
               placeholder="Search services by title or description..."
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              className="w-full pl-10 pr-4 py-2 rounded-xl bg-slate-800/80 border border-slate-700 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-amber-500 transition"
+              className="w-full pl-10 pr-4 py-2.5 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-xs text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:border-amber-500 focus:ring-2 focus:ring-amber-500/10 transition font-medium"
               id="admin-service-search"
             />
           </div>
@@ -306,7 +306,7 @@ export default function AdminServicesPage() {
             <select
               value={selectedCategory}
               onChange={(e) => setSelectedCategory(e.target.value)}
-              className="w-full py-2 px-3 rounded-xl bg-slate-800/80 border border-slate-700 text-xs text-white focus:outline-none focus:border-amber-500 transition cursor-pointer"
+              className="w-full py-2.5 px-3 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-xs text-slate-900 dark:text-white focus:outline-none focus:border-amber-500 focus:ring-2 focus:ring-amber-500/10 transition cursor-pointer font-medium"
             >
               <option value="ALL">All Categories</option>
               {categories.map((c) => (
@@ -319,10 +319,10 @@ export default function AdminServicesPage() {
         </div>
 
         {/* Services Table */}
-        <div className="rounded-2xl bg-slate-900 border border-slate-800 overflow-hidden shadow-xl">
+        <div className="rounded-2xl bg-white dark:bg-[#0f171a] border border-slate-200/90 dark:border-slate-800/80 overflow-hidden shadow-xs">
           <div className="overflow-x-auto">
-            <table className="w-full text-left text-xs text-slate-300">
-              <thead className="bg-slate-950/80 text-slate-400 uppercase tracking-wider text-[10px] border-b border-slate-800">
+            <table className="w-full text-left text-xs text-slate-600 dark:text-slate-300">
+              <thead className="bg-slate-50 dark:bg-slate-950/80 text-slate-500 dark:text-slate-400 uppercase tracking-wider text-[10px] border-b border-slate-200 dark:border-slate-800 font-bold">
                 <tr>
                   <th className="px-6 py-4 font-bold">Service</th>
                   <th className="px-6 py-4 font-bold">Category</th>
@@ -332,7 +332,7 @@ export default function AdminServicesPage() {
                   <th className="px-6 py-4 font-bold text-right">Actions</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-slate-800">
+              <tbody className="divide-y divide-slate-100 dark:divide-slate-800 font-medium">
                 {loading ? (
                   <tr>
                     <td colSpan={6} className="px-6 py-12 text-center text-slate-400">
@@ -347,10 +347,10 @@ export default function AdminServicesPage() {
                   </tr>
                 ) : (
                   filteredServices.map((svc) => (
-                    <tr key={svc.id} className="hover:bg-slate-800/40 transition">
+                    <tr key={svc.id} className="hover:bg-slate-50 dark:hover:bg-slate-800/40 transition-colors">
                       <td className="px-6 py-4">
                         <div className="flex items-center gap-3">
-                          <div className="h-10 w-10 rounded-xl bg-slate-800 overflow-hidden shrink-0 border border-slate-700">
+                          <div className="h-10 w-10 rounded-xl bg-slate-100 dark:bg-slate-800 overflow-hidden shrink-0 border border-slate-200 dark:border-slate-700">
                             {/* eslint-disable-next-line @next/next/no-img-element */}
                             <img
                               src={
@@ -362,8 +362,8 @@ export default function AdminServicesPage() {
                             />
                           </div>
                           <div>
-                            <p className="font-bold text-white text-sm">{svc.name}</p>
-                            <p className="text-[11px] text-slate-400 line-clamp-1 max-w-xs">
+                            <p className="font-bold text-slate-900 dark:text-white text-sm">{svc.name}</p>
+                            <p className="text-[11px] text-slate-500 dark:text-slate-400 line-clamp-1 max-w-xs font-normal">
                               {svc.description}
                             </p>
                           </div>
@@ -371,16 +371,16 @@ export default function AdminServicesPage() {
                       </td>
 
                       <td className="px-6 py-4">
-                        <span className="px-2.5 py-1 rounded-full text-[10px] font-bold bg-slate-800 text-sky-400 border border-slate-700">
+                        <span className="px-2.5 py-1 rounded-full text-[10px] font-bold bg-teal-50 text-teal-800 border border-teal-200 dark:bg-teal-950/60 dark:text-teal-300 dark:border-teal-800">
                           {svc.category?.name || 'Unassigned'}
                         </span>
                       </td>
 
-                      <td className="px-6 py-4 font-bold text-emerald-400">
+                      <td className="px-6 py-4 font-extrabold text-teal-700 dark:text-teal-400">
                         {formatCurrency(svc.price)}
                       </td>
 
-                      <td className="px-6 py-4 text-slate-400">
+                      <td className="px-6 py-4 text-slate-600 dark:text-slate-400">
                         {svc.durationMinutes} mins
                       </td>
 
@@ -399,7 +399,7 @@ export default function AdminServicesPage() {
                         <div className="flex items-center justify-end gap-2">
                           <button
                             onClick={() => handleOpenEditModal(svc)}
-                            className="p-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition"
+                            className="p-1.5 rounded-lg text-slate-500 hover:text-slate-900 hover:bg-slate-100 dark:text-slate-400 dark:hover:text-white dark:hover:bg-slate-800 transition-colors cursor-pointer"
                             title="Edit Service"
                           >
                             <Edit2 className="h-4 w-4" />
@@ -409,7 +409,7 @@ export default function AdminServicesPage() {
                               setServiceToDelete(svc);
                               setDeleteModalOpen(true);
                             }}
-                            className="p-1.5 rounded-lg text-rose-400 hover:text-rose-300 hover:bg-rose-500/10 transition"
+                            className="p-1.5 rounded-lg text-rose-600 dark:text-rose-400 hover:text-rose-700 dark:hover:text-rose-300 hover:bg-rose-50 dark:hover:bg-rose-500/10 transition-colors cursor-pointer"
                             title="Delete Service"
                           >
                             <Trash2 className="h-4 w-4" />
@@ -426,32 +426,32 @@ export default function AdminServicesPage() {
 
         {/* Add/Edit Service Modal */}
         {modalOpen && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm animate-in fade-in">
-            <div className="w-full max-w-xl rounded-3xl bg-slate-900 border border-slate-700 p-6 sm:p-8 shadow-2xl relative max-h-[90vh] overflow-y-auto">
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 dark:bg-black/80 backdrop-blur-sm animate-in fade-in">
+            <div className="w-full max-w-xl rounded-3xl bg-white dark:bg-[#0f171a] border border-slate-200 dark:border-slate-800 p-6 sm:p-8 shadow-2xl relative max-h-[90vh] overflow-y-auto">
               <button
                 onClick={() => setModalOpen(false)}
-                className="absolute top-5 right-5 p-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800"
+                className="absolute top-5 right-5 p-1.5 rounded-lg text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors cursor-pointer"
               >
                 <X className="h-5 w-5" />
               </button>
 
-              <h2 className="text-xl font-black text-white mb-1">
+              <h2 className="text-xl font-extrabold text-slate-900 dark:text-white mb-1">
                 {isEditing ? 'Edit Service' : 'Add New Service'}
               </h2>
-              <p className="text-xs text-slate-400 mb-6">
+              <p className="text-xs text-slate-500 dark:text-slate-400 mb-6 font-medium">
                 Fill in the details below to update your public offerings.
               </p>
 
               {formError && (
-                <div className="p-3 rounded-xl bg-rose-500/10 border border-rose-500/30 text-rose-300 text-xs flex items-center gap-2 mb-4">
-                  <AlertCircle className="h-4 w-4 shrink-0 text-rose-400" />
+                <div className="p-3.5 rounded-xl bg-rose-50 dark:bg-rose-500/10 border border-rose-200 dark:border-rose-500/30 text-rose-800 dark:text-rose-300 text-xs flex items-center gap-2 mb-4 font-medium">
+                  <AlertCircle className="h-4 w-4 shrink-0 text-rose-500 dark:text-rose-400" />
                   <span>{formError}</span>
                 </div>
               )}
 
               <form onSubmit={handleFormSubmit} className="space-y-4">
                 <div>
-                  <label className="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-1.5">
+                  <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300 mb-1.5">
                     Service Name *
                   </label>
                   <input
@@ -460,21 +460,21 @@ export default function AdminServicesPage() {
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                     placeholder="e.g. Master Electrician Panel Audit"
-                    className="w-full px-3.5 py-2.5 rounded-xl bg-slate-800/80 border border-slate-700 text-xs text-white focus:outline-none focus:border-amber-500"
+                    className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-xs text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:border-amber-500 focus:ring-2 focus:ring-amber-500/10 font-medium"
                     id="service-name-input"
                   />
                 </div>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-1.5">
+                    <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300 mb-1.5">
                       Category *
                     </label>
                     <select
                       required
                       value={formData.categoryId}
                       onChange={(e) => setFormData({ ...formData, categoryId: e.target.value })}
-                      className="w-full px-3 py-2.5 rounded-xl bg-slate-800/80 border border-slate-700 text-xs text-white focus:outline-none focus:border-amber-500 cursor-pointer"
+                      className="w-full px-3 py-2.5 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-xs text-slate-900 dark:text-white focus:outline-none focus:border-amber-500 cursor-pointer font-medium"
                       id="service-category-select"
                     >
                       <option value="" disabled>
@@ -489,7 +489,7 @@ export default function AdminServicesPage() {
                   </div>
 
                   <div>
-                    <label className="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-1.5">
+                    <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300 mb-1.5">
                       Status
                     </label>
                     <select
@@ -500,7 +500,7 @@ export default function AdminServicesPage() {
                           status: e.target.value as 'ACTIVE' | 'INACTIVE',
                         })
                       }
-                      className="w-full px-3 py-2.5 rounded-xl bg-slate-800/80 border border-slate-700 text-xs text-white focus:outline-none focus:border-amber-500 cursor-pointer"
+                      className="w-full px-3 py-2.5 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-xs text-slate-900 dark:text-white focus:outline-none focus:border-amber-500 cursor-pointer font-medium"
                     >
                       <option value="ACTIVE">ACTIVE</option>
                       <option value="INACTIVE">INACTIVE</option>
@@ -510,7 +510,7 @@ export default function AdminServicesPage() {
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-1.5">
+                    <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300 mb-1.5">
                       Price ($ USD) *
                     </label>
                     <input
@@ -521,13 +521,13 @@ export default function AdminServicesPage() {
                       value={formData.price}
                       onChange={(e) => setFormData({ ...formData, price: e.target.value })}
                       placeholder="129.99"
-                      className="w-full px-3.5 py-2.5 rounded-xl bg-slate-800/80 border border-slate-700 text-xs text-white focus:outline-none focus:border-amber-500"
+                      className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-xs text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:border-amber-500 focus:ring-2 focus:ring-amber-500/10 font-medium"
                       id="service-price-input"
                     />
                   </div>
 
                   <div>
-                    <label className="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-1.5">
+                    <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300 mb-1.5">
                       Duration (Minutes)
                     </label>
                     <input
@@ -539,14 +539,14 @@ export default function AdminServicesPage() {
                         setFormData({ ...formData, durationMinutes: e.target.value })
                       }
                       placeholder="60"
-                      className="w-full px-3.5 py-2.5 rounded-xl bg-slate-800/80 border border-slate-700 text-xs text-white focus:outline-none focus:border-amber-500"
+                      className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-xs text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:border-amber-500 focus:ring-2 focus:ring-amber-500/10 font-medium"
                       id="service-duration-input"
                     />
                   </div>
                 </div>
 
                 <div>
-                  <label className="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-1.5">
+                  <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300 mb-1.5">
                     Image URL (Optional)
                   </label>
                   <input
@@ -554,12 +554,12 @@ export default function AdminServicesPage() {
                     value={formData.imageUrl}
                     onChange={(e) => setFormData({ ...formData, imageUrl: e.target.value })}
                     placeholder="https://images.unsplash.com/..."
-                    className="w-full px-3.5 py-2.5 rounded-xl bg-slate-800/80 border border-slate-700 text-xs text-white focus:outline-none focus:border-amber-500"
+                    className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-xs text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:border-amber-500 focus:ring-2 focus:ring-amber-500/10 font-medium"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-1.5">
+                  <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300 mb-1.5">
                     Service Description *
                   </label>
                   <textarea
@@ -568,7 +568,7 @@ export default function AdminServicesPage() {
                     value={formData.description}
                     onChange={(e) => setFormData({ ...formData, description: e.target.value })}
                     placeholder="Describe what is covered, standards, and equipment provided..."
-                    className="w-full px-3.5 py-2 rounded-xl bg-slate-800/80 border border-slate-700 text-xs text-white focus:outline-none focus:border-amber-500"
+                    className="w-full px-3.5 py-2 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-xs text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:border-amber-500 focus:ring-2 focus:ring-amber-500/10 font-medium"
                     id="service-desc-input"
                   />
                 </div>
@@ -577,14 +577,14 @@ export default function AdminServicesPage() {
                   <button
                     type="button"
                     onClick={() => setModalOpen(false)}
-                    className="px-4 py-2 rounded-xl text-xs font-medium text-slate-300 hover:text-white hover:bg-slate-800"
+                    className="px-4 py-2 rounded-xl text-xs font-medium text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors cursor-pointer"
                   >
                     Cancel
                   </button>
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="px-6 py-2.5 rounded-xl font-bold text-xs uppercase tracking-wider text-slate-950 bg-amber-400 hover:bg-amber-300 shadow-md transition disabled:opacity-50"
+                    className="px-6 py-2.5 rounded-xl font-bold text-xs uppercase tracking-wider text-slate-950 bg-amber-400 hover:bg-amber-300 shadow-md shadow-amber-400/20 transition-all hover:scale-[1.01] active:scale-[0.99] disabled:opacity-50 cursor-pointer"
                     id="submit-service-btn"
                   >
                     {isSubmitting ? 'Saving...' : isEditing ? 'Save Changes' : 'Create Service'}

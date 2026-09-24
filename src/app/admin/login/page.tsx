@@ -53,37 +53,37 @@ export default function AdminLoginPage() {
 
   return (
     <div className="min-h-[85vh] flex items-center justify-center px-4 py-12">
-      <div className="w-full max-w-md p-8 rounded-3xl bg-slate-900/95 border border-amber-500/30 shadow-2xl space-y-6 relative overflow-hidden">
+      <div className="w-full max-w-md p-8 rounded-3xl bg-white dark:bg-[#0f171a] border border-amber-200 dark:border-amber-500/30 shadow-xl dark:shadow-2xl space-y-6 relative overflow-hidden">
         <div className="absolute -right-12 -top-12 w-36 h-36 bg-amber-500/10 rounded-full blur-2xl pointer-events-none" />
 
         <div className="text-center space-y-2">
-          <div className="inline-flex h-14 w-14 rounded-2xl bg-gradient-to-tr from-amber-600 to-yellow-400 items-center justify-center text-white shadow-lg shadow-amber-500/25 mb-1">
+          <div className="inline-flex h-14 w-14 rounded-2xl bg-linear-to-tr from-amber-600 to-yellow-500 items-center justify-center text-white shadow-md shadow-amber-500/25 mb-1">
             <ShieldCheck className="h-7 w-7" />
           </div>
-          <h1 className="text-2xl font-black text-white">Administrator Portal</h1>
-          <p className="text-xs text-slate-400">
+          <h1 className="text-2xl font-extrabold text-slate-900 dark:text-white tracking-tight">Administrator Portal</h1>
+          <p className="text-xs text-slate-500 dark:text-slate-400 font-medium">
             Secure administrative console for service, booking, and user management
           </p>
         </div>
 
         {/* Quick autofill note */}
-        <div className="p-3 rounded-xl bg-amber-500/10 border border-amber-500/20 text-xs text-amber-300 flex items-center justify-between">
+        <div className="p-3.5 rounded-xl bg-amber-50 dark:bg-amber-500/10 border border-amber-200 dark:border-amber-500/20 text-xs text-amber-800 dark:text-amber-300 flex items-center justify-between font-medium">
           <div className="flex items-center gap-2">
-            <Sparkles className="h-4 w-4 shrink-0 text-amber-400" />
+            <Sparkles className="h-4 w-4 shrink-0 text-amber-600 dark:text-amber-400" />
             <span>Pre-filled with default Admin demo credentials</span>
           </div>
         </div>
 
         {error && (
-          <div className="p-3.5 rounded-xl bg-rose-500/10 border border-rose-500/30 text-rose-300 text-xs flex items-center gap-2">
-            <AlertCircle className="h-4 w-4 shrink-0 text-rose-400" />
+          <div className="p-3.5 rounded-xl bg-rose-50 dark:bg-rose-500/10 border border-rose-200 dark:border-rose-500/30 text-rose-800 dark:text-rose-300 text-xs flex items-center gap-2 font-medium">
+            <AlertCircle className="h-4 w-4 shrink-0 text-rose-500 dark:text-rose-400" />
             <span>{error}</span>
           </div>
         )}
 
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
-            <label className="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-1.5">
+            <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300 mb-1.5">
               Admin Email Address
             </label>
             <input
@@ -91,13 +91,13 @@ export default function AdminLoginPage() {
               required
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="w-full px-3.5 py-2.5 rounded-xl bg-slate-800/80 border border-slate-700 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-amber-500 transition"
+              className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-sm text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:border-amber-500 focus:ring-2 focus:ring-amber-500/10 transition font-medium"
               id="admin-email-input"
             />
           </div>
 
           <div>
-            <label className="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-1.5">
+            <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300 mb-1.5">
               Admin Password
             </label>
             <input
@@ -105,7 +105,7 @@ export default function AdminLoginPage() {
               required
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className="w-full px-3.5 py-2.5 rounded-xl bg-slate-800/80 border border-slate-700 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-amber-500 transition"
+              className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-sm text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:border-amber-500 focus:ring-2 focus:ring-amber-500/10 transition font-medium"
               id="admin-password-input"
             />
           </div>
@@ -113,7 +113,7 @@ export default function AdminLoginPage() {
           <button
             type="submit"
             disabled={loading}
-            className="w-full py-3 rounded-xl font-bold text-sm text-slate-950 bg-amber-400 hover:bg-amber-300 shadow-xl shadow-amber-500/20 transition-all hover:scale-[1.02] active:scale-[0.98] disabled:opacity-50 flex items-center justify-center gap-2 mt-2"
+            className="w-full py-3 rounded-xl font-bold text-sm text-slate-950 bg-amber-400 hover:bg-amber-300 shadow-md shadow-amber-400/20 transition-all hover:scale-[1.01] active:scale-[0.99] disabled:opacity-50 flex items-center justify-center gap-2 mt-2 cursor-pointer"
             id="admin-submit-btn"
           >
             <Lock className="h-4 w-4" />
@@ -122,9 +122,9 @@ export default function AdminLoginPage() {
           </button>
         </form>
 
-        <div className="text-center pt-2 border-t border-slate-800/80 text-xs text-slate-400">
+        <div className="text-center pt-2 border-t border-slate-100 dark:border-slate-800/80 text-xs text-slate-500 dark:text-slate-400 font-medium">
           Looking for customer login?{' '}
-          <Link href="/login" className="text-blue-400 hover:underline">
+          <Link href="/login" className="text-teal-700 dark:text-teal-400 hover:underline font-bold">
             Switch to customer sign in
           </Link>
         </div>

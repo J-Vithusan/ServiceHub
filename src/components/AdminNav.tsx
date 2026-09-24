@@ -23,12 +23,12 @@ export function AdminNav() {
   ];
 
   return (
-    <div className="w-full border-b border-amber-500/20 bg-slate-950/60 backdrop-blur-md mb-8">
+    <div className="w-full border-b border-amber-200/80 bg-amber-50/50 backdrop-blur-md mb-8 dark:border-amber-500/20 dark:bg-slate-950/60 transition-colors duration-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between py-3 overflow-x-auto gap-4 no-scrollbar">
           <div className="flex items-center gap-2 shrink-0">
-            <span className="flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-amber-500/15 text-amber-400 text-xs font-bold border border-amber-500/30 uppercase tracking-wider">
-              <ShieldCheck className="h-3.5 w-3.5" />
+            <span className="flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-amber-100 text-amber-800 text-xs font-bold border border-amber-200 uppercase tracking-wider dark:bg-amber-500/15 dark:text-amber-400 dark:border-amber-500/30">
+              <ShieldCheck className="h-3.5 w-3.5 text-amber-600 dark:text-amber-400" />
               <span>Admin Console</span>
             </span>
           </div>
@@ -43,8 +43,8 @@ export function AdminNav() {
                   href={item.href}
                   className={`flex items-center gap-2 px-3 py-1.5 rounded-xl text-xs font-semibold transition ${
                     isActive
-                      ? 'bg-amber-500/20 text-amber-300 border border-amber-500/40'
-                      : 'text-slate-400 hover:text-white hover:bg-slate-800/60'
+                      ? 'bg-amber-200/70 text-amber-900 border border-amber-300 font-bold dark:bg-amber-500/20 dark:text-amber-300 dark:border-amber-500/40'
+                      : 'text-slate-600 hover:text-slate-900 hover:bg-slate-200/60 dark:text-slate-400 dark:hover:text-white dark:hover:bg-slate-800/60'
                   }`}
                 >
                   <Icon className="h-3.5 w-3.5" />
@@ -57,7 +57,7 @@ export function AdminNav() {
           <div className="shrink-0 hidden md:block">
             <Link
               href="/services"
-              className="text-xs text-slate-400 hover:text-white flex items-center gap-1"
+              className="text-xs text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white flex items-center gap-1 transition"
             >
               <span>Public Site</span>
               <ExternalLink className="h-3 w-3" />

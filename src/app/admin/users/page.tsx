@@ -79,24 +79,24 @@ export default function AdminUsersPage() {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
         <div>
-          <h1 className="text-3xl font-black text-white tracking-tight">
+          <h1 className="text-3xl font-extrabold text-slate-900 dark:text-white tracking-tight">
             Manage Users & Accounts
           </h1>
-          <p className="text-sm text-slate-400 mt-1">
+          <p className="text-sm text-slate-600 dark:text-slate-400 mt-1 font-medium">
             Directory of registered customers and platform administrators.
           </p>
         </div>
 
         {/* Filters */}
-        <div className="flex flex-col sm:flex-row items-center gap-4 p-4 rounded-2xl bg-slate-900 border border-slate-800">
+        <div className="flex flex-col sm:flex-row items-center gap-4 p-4 rounded-2xl bg-white dark:bg-[#0f171a] border border-slate-200/90 dark:border-slate-800/80 shadow-xs">
           <div className="relative flex-1 w-full">
-            <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-400" />
+            <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-400 dark:text-slate-500" />
             <input
               type="text"
               placeholder="Search users by name, email, or phone..."
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              className="w-full pl-10 pr-4 py-2 rounded-xl bg-slate-800/80 border border-slate-700 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-amber-500 transition"
+              className="w-full pl-10 pr-4 py-2.5 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-xs text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:border-amber-500 focus:ring-2 focus:ring-amber-500/10 transition font-medium"
               id="admin-user-search"
             />
           </div>
@@ -106,10 +106,10 @@ export default function AdminUsersPage() {
               <button
                 key={rf}
                 onClick={() => setRoleFilter(rf)}
-                className={`px-3 py-1.5 rounded-xl text-xs font-bold transition whitespace-nowrap ${
+                className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-colors whitespace-nowrap cursor-pointer ${
                   roleFilter === rf
-                    ? 'bg-amber-400 text-slate-950 shadow-md'
-                    : 'bg-slate-800 text-slate-300 hover:text-white'
+                    ? 'bg-amber-400 text-slate-950 shadow-xs'
+                    : 'bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white'
                 }`}
               >
                 {rf === 'ALL' ? 'All Roles' : rf}
@@ -119,10 +119,10 @@ export default function AdminUsersPage() {
         </div>
 
         {/* Users Table */}
-        <div className="rounded-2xl bg-slate-900 border border-slate-800 overflow-hidden shadow-xl">
+        <div className="rounded-2xl bg-white dark:bg-[#0f171a] border border-slate-200/90 dark:border-slate-800/80 overflow-hidden shadow-xs">
           <div className="overflow-x-auto">
-            <table className="w-full text-left text-xs text-slate-300">
-              <thead className="bg-slate-950/80 text-slate-400 uppercase tracking-wider text-[10px] border-b border-slate-800">
+            <table className="w-full text-left text-xs text-slate-600 dark:text-slate-300">
+              <thead className="bg-slate-50 dark:bg-slate-950/80 text-slate-500 dark:text-slate-400 uppercase tracking-wider text-[10px] border-b border-slate-200 dark:border-slate-800 font-bold">
                 <tr>
                   <th className="px-6 py-4 font-bold">User</th>
                   <th className="px-6 py-4 font-bold">Role</th>
@@ -132,7 +132,7 @@ export default function AdminUsersPage() {
                   <th className="px-6 py-4 font-bold text-right">Joined</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-slate-800">
+              <tbody className="divide-y divide-slate-100 dark:divide-slate-800 font-medium">
                 {loading ? (
                   <tr>
                     <td colSpan={6} className="px-6 py-12 text-center text-slate-400">
@@ -147,10 +147,10 @@ export default function AdminUsersPage() {
                   </tr>
                 ) : (
                   filteredUsers.map((u) => (
-                    <tr key={u.id} className="hover:bg-slate-800/40 transition">
+                    <tr key={u.id} className="hover:bg-slate-50 dark:hover:bg-slate-800/40 transition-colors">
                       <td className="px-6 py-4">
                         <div className="flex items-center gap-3">
-                          <div className="h-9 w-9 rounded-full bg-slate-800 overflow-hidden flex items-center justify-center text-white font-bold text-xs shrink-0 border border-slate-700">
+                          <div className="h-9 w-9 rounded-full bg-teal-700 overflow-hidden flex items-center justify-center text-white font-bold text-xs shrink-0 border border-slate-200 dark:border-slate-700">
                             {u.avatarUrl ? (
                               // eslint-disable-next-line @next/next/no-img-element
                               <img
@@ -163,8 +163,8 @@ export default function AdminUsersPage() {
                             )}
                           </div>
                           <div>
-                            <p className="font-bold text-white text-sm">{u.name}</p>
-                            <p className="text-[11px] text-slate-400">{u.email}</p>
+                            <p className="font-bold text-slate-900 dark:text-white text-sm">{u.name}</p>
+                            <p className="text-[11px] text-slate-500 dark:text-slate-400">{u.email}</p>
                           </div>
                         </div>
                       </td>
@@ -173,8 +173,8 @@ export default function AdminUsersPage() {
                         <span
                           className={`inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[10px] font-bold uppercase ${
                             u.role === 'ADMIN'
-                              ? 'bg-amber-500/15 text-amber-300 border border-amber-500/30'
-                              : 'bg-blue-500/15 text-blue-300 border border-blue-500/30'
+                              ? 'bg-amber-50 text-amber-800 border border-amber-200 dark:bg-amber-500/15 dark:text-amber-300 dark:border-amber-500/30'
+                              : 'bg-teal-50 text-teal-800 border border-teal-200 dark:bg-teal-500/15 dark:text-teal-300 dark:border-teal-500/30'
                           }`}
                         >
                           {u.role === 'ADMIN' ? (
@@ -186,21 +186,21 @@ export default function AdminUsersPage() {
                         </span>
                       </td>
 
-                      <td className="px-6 py-4 text-slate-300">
-                        {u.phone || <span className="text-slate-500 italic">None</span>}
+                      <td className="px-6 py-4 text-slate-700 dark:text-slate-300">
+                        {u.phone || <span className="text-slate-400 italic">None</span>}
                       </td>
 
-                      <td className="px-6 py-4 text-slate-300 max-w-xs truncate">
-                        {u.address || <span className="text-slate-500 italic">None</span>}
+                      <td className="px-6 py-4 text-slate-700 dark:text-slate-300 max-w-xs truncate">
+                        {u.address || <span className="text-slate-400 italic">None</span>}
                       </td>
 
-                      <td className="px-6 py-4 font-bold text-white">
-                        <span className="px-2 py-0.5 rounded-lg bg-slate-800 border border-slate-700">
+                      <td className="px-6 py-4 font-bold text-slate-900 dark:text-white">
+                        <span className="px-2.5 py-0.5 rounded-lg bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
                           {u._count.bookings}
                         </span>
                       </td>
 
-                      <td className="px-6 py-4 text-right text-slate-400">
+                      <td className="px-6 py-4 text-right text-slate-500 dark:text-slate-400">
                         {formatDate(u.createdAt)}
                       </td>
                     </tr>

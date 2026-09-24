@@ -66,53 +66,53 @@ function LoginFormContent() {
   };
 
   return (
-    <div className="w-full max-w-md p-8 rounded-3xl bg-slate-900/90 border border-slate-800 shadow-2xl space-y-6">
+    <div className="w-full max-w-md p-8 rounded-3xl bg-white dark:bg-[#0f171a] border border-slate-200/90 dark:border-slate-800/80 shadow-xl dark:shadow-2xl space-y-6">
       <div className="text-center space-y-2">
-        <div className="inline-flex h-12 w-12 rounded-2xl bg-gradient-to-tr from-blue-600 to-sky-400 items-center justify-center text-white shadow-lg shadow-blue-500/25 mb-1">
+        <div className="inline-flex h-12 w-12 rounded-2xl bg-linear-to-tr from-teal-700 to-teal-500 items-center justify-center text-white shadow-md shadow-teal-700/20 mb-1">
           <Wrench className="h-6 w-6" />
         </div>
-        <h1 className="text-2xl font-black text-white">Welcome Back</h1>
-        <p className="text-xs text-slate-400">
+        <h1 className="text-2xl font-extrabold text-slate-900 dark:text-white tracking-tight">Welcome Back</h1>
+        <p className="text-xs text-slate-500 dark:text-slate-400 font-medium">
           Sign in to manage your appointments or administrative panel
         </p>
       </div>
 
       {/* Quick Demo Credentials Bar for Evaluators */}
-      <div className="p-3.5 rounded-2xl bg-blue-500/10 border border-blue-500/20 text-xs space-y-2">
-        <div className="flex items-center gap-1.5 text-blue-400 font-bold">
-          <Sparkles className="h-3.5 w-3.5" />
+      <div className="p-4 rounded-2xl bg-teal-50/70 dark:bg-teal-950/40 border border-teal-200/80 dark:border-teal-800/60 text-xs space-y-2.5">
+        <div className="flex items-center gap-1.5 text-teal-800 dark:text-teal-300 font-bold">
+          <Sparkles className="h-3.5 w-3.5 text-teal-600 dark:text-teal-400" />
           <span>Quick Demo Access (One-Click Fill)</span>
         </div>
-        <div className="grid grid-cols-2 gap-2 pt-1">
+        <div className="grid grid-cols-2 gap-2 pt-0.5">
           <button
             type="button"
             onClick={() => handleDemoLogin('CUSTOMER')}
-            className="flex items-center justify-center gap-1.5 py-1.5 px-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 font-semibold text-[11px] border border-slate-700 transition"
+            className="flex items-center justify-center gap-1.5 py-2 px-2 rounded-xl bg-white dark:bg-slate-800 hover:bg-slate-50 dark:hover:bg-slate-750 text-slate-800 dark:text-slate-200 font-semibold text-[11px] border border-teal-200 dark:border-slate-700 transition-colors shadow-2xs cursor-pointer"
           >
-            <User className="h-3 w-3 text-sky-400" />
+            <User className="h-3.5 w-3.5 text-teal-600 dark:text-teal-400" />
             <span>Demo Customer</span>
           </button>
           <button
             type="button"
             onClick={() => handleDemoLogin('ADMIN')}
-            className="flex items-center justify-center gap-1.5 py-1.5 px-2 rounded-xl bg-amber-500/15 hover:bg-amber-500/25 text-amber-300 font-semibold text-[11px] border border-amber-500/30 transition"
+            className="flex items-center justify-center gap-1.5 py-2 px-2 rounded-xl bg-amber-50 dark:bg-amber-500/15 hover:bg-amber-100 dark:hover:bg-amber-500/25 text-amber-800 dark:text-amber-300 font-semibold text-[11px] border border-amber-200 dark:border-amber-500/30 transition-colors shadow-2xs cursor-pointer"
           >
-            <Shield className="h-3 w-3 text-amber-400" />
+            <Shield className="h-3.5 w-3.5 text-amber-600 dark:text-amber-400" />
             <span>Demo Admin</span>
           </button>
         </div>
       </div>
 
       {error && (
-        <div className="p-3.5 rounded-xl bg-rose-500/10 border border-rose-500/30 text-rose-300 text-xs flex items-center gap-2">
-          <AlertCircle className="h-4 w-4 shrink-0 text-rose-400" />
+        <div className="p-3.5 rounded-xl bg-rose-50 dark:bg-rose-500/10 border border-rose-200 dark:border-rose-500/30 text-rose-800 dark:text-rose-300 text-xs flex items-center gap-2 font-medium">
+          <AlertCircle className="h-4 w-4 shrink-0 text-rose-500 dark:text-rose-400" />
           <span>{error}</span>
         </div>
       )}
 
       <form onSubmit={handleSubmit} className="space-y-4">
         <div>
-          <label className="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-1.5">
+          <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300 mb-1.5">
             Email Address
           </label>
           <input
@@ -121,14 +121,14 @@ function LoginFormContent() {
             placeholder="name@example.com"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            className="w-full px-3.5 py-2.5 rounded-xl bg-slate-800/80 border border-slate-700 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-blue-500 transition"
+            className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-sm text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:border-teal-600 focus:ring-2 focus:ring-teal-500/10 transition font-medium"
             id="login-email"
           />
         </div>
 
         <div>
           <div className="flex items-center justify-between mb-1.5">
-            <label className="block text-xs font-bold uppercase tracking-wider text-slate-300">
+            <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300">
               Password
             </label>
           </div>
@@ -138,7 +138,7 @@ function LoginFormContent() {
             placeholder="••••••••"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            className="w-full px-3.5 py-2.5 rounded-xl bg-slate-800/80 border border-slate-700 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-blue-500 transition"
+            className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-sm text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:border-teal-600 focus:ring-2 focus:ring-teal-500/10 transition font-medium"
             id="login-password"
           />
         </div>
@@ -146,7 +146,7 @@ function LoginFormContent() {
         <button
           type="submit"
           disabled={loading}
-          className="w-full py-3 rounded-xl font-bold text-sm text-white bg-blue-600 hover:bg-blue-500 shadow-xl shadow-blue-600/30 transition-all hover:scale-[1.02] active:scale-[0.98] disabled:opacity-50 flex items-center justify-center gap-2 mt-2"
+          className="w-full py-3 rounded-xl font-bold text-sm text-white bg-teal-700 hover:bg-teal-800 dark:bg-teal-600 dark:hover:bg-teal-500 shadow-sm shadow-teal-700/20 transition-all hover:scale-[1.01] active:scale-[0.99] disabled:opacity-50 flex items-center justify-center gap-2 mt-2 cursor-pointer"
           id="login-submit-btn"
         >
           <span>{loading ? 'Authenticating...' : 'Sign In'}</span>
@@ -154,9 +154,9 @@ function LoginFormContent() {
         </button>
       </form>
 
-      <div className="text-center pt-2 border-t border-slate-800/80 text-xs text-slate-400">
+      <div className="text-center pt-2 border-t border-slate-100 dark:border-slate-800/80 text-xs text-slate-500 dark:text-slate-400 font-medium">
         Don&apos;t have an account yet?{' '}
-        <Link href="/register" className="text-blue-400 hover:underline font-semibold">
+        <Link href="/register" className="text-teal-700 dark:text-teal-400 hover:underline font-bold">
           Create an account
         </Link>
       </div>
