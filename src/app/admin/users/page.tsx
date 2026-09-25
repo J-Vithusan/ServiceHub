@@ -9,6 +9,7 @@ import {
   Search,
   Users,
   Shield,
+  ShieldCheck,
   User,
   Calendar,
   Mail,
@@ -118,10 +119,74 @@ export default function AdminUsersPage() {
           </div>
         </div>
 
-        {/* Users Table */}
-        <div className="rounded-2xl bg-white dark:bg-[#0f171a] border border-slate-200/90 dark:border-slate-800/80 overflow-hidden shadow-xs">
+        {/* Mobile Card-Based View (< 768px) */}
+        <div className="block md:hidden space-y-4">
+          {loading ? (
+            <div className="p-8 text-center text-muted-foreground text-xs">Loading users...</div>
+          ) : filteredUsers.length === 0 ? (
+            <div className="p-8 text-center text-muted-foreground text-xs">No accounts found matching filters.</div>
+          ) : (
+            filteredUsers.map((u) => (
+              <div key={u.id} className="p-5 rounded-2xl bg-card border border-border space-y-3 shadow-xs">
+                <div className="flex items-center justify-between gap-2">
+                  <div className="flex items-center gap-3">
+                    <div className="h-10 w-10 rounded-full bg-teal-700 text-white font-bold text-xs flex items-center justify-center shrink-0 border border-border overflow-hidden">
+                      {u.avatarUrl ? (
+                        // eslint-disable-next-line @next/next/no-img-element
+                        <img src={u.avatarUrl} alt={u.name} className="h-full w-full object-cover" />
+                      ) : (
+                        u.name.charAt(0).toUpperCase()
+                      )}
+                    </div>
+                    <div>
+                      <p className="font-bold text-foreground text-sm">{u.name}</p>
+                      <p className="text-xs text-muted-foreground">{u.email}</p>
+                    </div>
+                  </div>
+                  <span
+                    className={`inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[10px] font-bold uppercase ${
+                      u.role === 'ADMIN'
+                        ? 'bg-amber-500/15 text-amber-700 dark:text-amber-300 border border-amber-500/30'
+                        : 'bg-teal-500/15 text-teal-700 dark:text-teal-300 border border-teal-500/30'
+                    }`}
+                  >
+                    {u.role === 'ADMIN' ? (
+                      <ShieldCheck className="h-3 w-3" />
+                    ) : (
+                      <User className="h-3 w-3" />
+                    )}
+                    {u.role}
+                  </span>
+                </div>
+
+                <div className="p-3 rounded-xl bg-secondary/60 border border-border text-xs space-y-1.5">
+                  <div className="flex justify-between">
+                    <span className="text-muted-foreground">Phone:</span>
+                    <span className="text-foreground font-medium">{u.phone || 'Not provided'}</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-muted-foreground">Address:</span>
+                    <span className="text-foreground font-medium truncate max-w-[200px]">{u.address || 'Not provided'}</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-muted-foreground">Total Bookings:</span>
+                    <span className="font-bold text-teal-700 dark:text-teal-400">{u._count?.bookings || 0}</span>
+                  </div>
+                </div>
+
+                <div className="flex justify-between text-[11px] text-muted-foreground pt-1">
+                  <span>Joined: {formatDate(u.createdAt)}</span>
+                  <span className="font-mono text-[10px]">ID: {u.id.slice(0, 8)}...</span>
+                </div>
+              </div>
+            ))
+          )}
+        </div>
+
+        {/* Desktop Users Table (>= 768px) */}
+        <div className="hidden md:block rounded-2xl bg-card border border-border overflow-hidden shadow-xs">
           <div className="overflow-x-auto">
-            <table className="w-full text-left text-xs text-slate-600 dark:text-slate-300">
+            <table className="w-full text-left text-xs text-muted-foreground">
               <thead className="bg-slate-50 dark:bg-slate-950/80 text-slate-500 dark:text-slate-400 uppercase tracking-wider text-[10px] border-b border-slate-200 dark:border-slate-800 font-bold">
                 <tr>
                   <th className="px-6 py-4 font-bold">User</th>

@@ -112,7 +112,7 @@ function LoginFormContent() {
 
       <form onSubmit={handleSubmit} className="space-y-4">
         <div>
-          <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300 mb-1.5">
+          <label className="block mono-index text-[11px] font-bold text-foreground mb-1.5">
             Email Address
           </label>
           <input
@@ -121,14 +121,14 @@ function LoginFormContent() {
             placeholder="name@example.com"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-sm text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:border-teal-600 focus:ring-2 focus:ring-teal-500/10 transition font-medium"
+            className="w-full h-11 px-3.5 rounded-xl bg-secondary border border-border text-sm text-foreground placeholder-muted-foreground focus:outline-none focus:border-teal-500 focus:ring-2 focus:ring-teal-500/20 transition font-medium"
             id="login-email"
           />
         </div>
 
         <div>
           <div className="flex items-center justify-between mb-1.5">
-            <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300">
+            <label className="block mono-index text-[11px] font-bold text-foreground">
               Password
             </label>
           </div>
@@ -138,7 +138,7 @@ function LoginFormContent() {
             placeholder="••••••••"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-sm text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:border-teal-600 focus:ring-2 focus:ring-teal-500/10 transition font-medium"
+            className="w-full h-11 px-3.5 rounded-xl bg-secondary border border-border text-sm text-foreground placeholder-muted-foreground focus:outline-none focus:border-teal-500 focus:ring-2 focus:ring-teal-500/20 transition font-medium"
             id="login-password"
           />
         </div>
@@ -146,15 +146,15 @@ function LoginFormContent() {
         <button
           type="submit"
           disabled={loading}
-          className="w-full py-3 rounded-xl font-bold text-sm text-white bg-teal-700 hover:bg-teal-800 dark:bg-teal-600 dark:hover:bg-teal-500 shadow-sm shadow-teal-700/20 transition-all hover:scale-[1.01] active:scale-[0.99] disabled:opacity-50 flex items-center justify-center gap-2 mt-2 cursor-pointer"
+          className="btn-primary w-full min-h-[48px] shadow-lg shadow-teal-700/25 mt-2"
           id="login-submit-btn"
         >
-          <span>{loading ? 'Authenticating...' : 'Sign In'}</span>
+          <span>{loading ? 'Authenticating...' : 'Sign In to Account'}</span>
           <ArrowRight className="h-4 w-4" />
         </button>
       </form>
 
-      <div className="text-center pt-2 border-t border-slate-100 dark:border-slate-800/80 text-xs text-slate-500 dark:text-slate-400 font-medium">
+      <div className="text-center pt-2 border-t border-border text-xs text-muted-foreground font-medium">
         Don&apos;t have an account yet?{' '}
         <Link href="/register" className="text-teal-700 dark:text-teal-400 hover:underline font-bold">
           Create an account

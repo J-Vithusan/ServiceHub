@@ -79,7 +79,7 @@ export default function RegisterPage() {
 
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
-            <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300 mb-1.5">
+            <label className="block mono-index text-[11px] font-bold text-foreground mb-1.5">
               Full Name *
             </label>
             <input
@@ -88,13 +88,13 @@ export default function RegisterPage() {
               placeholder="e.g. Jane Doe"
               value={name}
               onChange={(e) => setName(e.target.value)}
-              className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-sm text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:border-teal-600 focus:ring-2 focus:ring-teal-500/10 transition font-medium"
+              className="w-full h-11 px-3.5 rounded-xl bg-secondary border border-border text-sm text-foreground placeholder-muted-foreground focus:outline-none focus:border-teal-500 focus:ring-2 focus:ring-teal-500/20 transition font-medium"
               id="register-name"
             />
           </div>
 
           <div>
-            <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300 mb-1.5">
+            <label className="block mono-index text-[11px] font-bold text-foreground mb-1.5">
               Email Address *
             </label>
             <input
@@ -103,13 +103,13 @@ export default function RegisterPage() {
               placeholder="jane@example.com"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-sm text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:border-teal-600 focus:ring-2 focus:ring-teal-500/10 transition font-medium"
+              className="w-full h-11 px-3.5 rounded-xl bg-secondary border border-border text-sm text-foreground placeholder-muted-foreground focus:outline-none focus:border-teal-500 focus:ring-2 focus:ring-teal-500/20 transition font-medium"
               id="register-email"
             />
           </div>
 
           <div>
-            <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300 mb-1.5">
+            <label className="block mono-index text-[11px] font-bold text-foreground mb-1.5">
               Password * (minimum 6 characters)
             </label>
             <input
@@ -119,14 +119,14 @@ export default function RegisterPage() {
               placeholder="••••••••"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-sm text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:border-teal-600 focus:ring-2 focus:ring-teal-500/10 transition font-medium"
+              className="w-full h-11 px-3.5 rounded-xl bg-secondary border border-border text-sm text-foreground placeholder-muted-foreground focus:outline-none focus:border-teal-500 focus:ring-2 focus:ring-teal-500/20 transition font-medium"
               id="register-password"
             />
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             <div>
-              <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300 mb-1.5">
+              <label className="block mono-index text-[11px] font-bold text-foreground mb-1.5">
                 Phone Number (Optional)
               </label>
               <input
@@ -134,13 +134,13 @@ export default function RegisterPage() {
                 placeholder="+1 (555) 000-0000"
                 value={phone}
                 onChange={(e) => setPhone(e.target.value)}
-                className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-sm text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:border-teal-600 focus:ring-2 focus:ring-teal-500/10 transition font-medium"
+                className="w-full h-11 px-3.5 rounded-xl bg-secondary border border-border text-sm text-foreground placeholder-muted-foreground focus:outline-none focus:border-teal-500 focus:ring-2 focus:ring-teal-500/20 transition font-medium"
                 id="register-phone"
               />
             </div>
 
             <div>
-              <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300 mb-1.5">
+              <label className="block mono-index text-[11px] font-bold text-foreground mb-1.5">
                 Service Address (Optional)
               </label>
               <input
@@ -148,7 +148,7 @@ export default function RegisterPage() {
                 placeholder="123 Main St, City, State"
                 value={address}
                 onChange={(e) => setAddress(e.target.value)}
-                className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-sm text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:border-teal-600 focus:ring-2 focus:ring-teal-500/10 transition font-medium"
+                className="w-full h-11 px-3.5 rounded-xl bg-secondary border border-border text-sm text-foreground placeholder-muted-foreground focus:outline-none focus:border-teal-500 focus:ring-2 focus:ring-teal-500/20 transition font-medium"
                 id="register-address"
               />
             </div>
@@ -158,7 +158,7 @@ export default function RegisterPage() {
             <button
               type="submit"
               disabled={loading}
-              className="w-full py-3 rounded-xl font-bold text-sm text-white bg-teal-700 hover:bg-teal-800 dark:bg-teal-600 dark:hover:bg-teal-500 shadow-sm shadow-teal-700/20 transition-all hover:scale-[1.01] active:scale-[0.99] disabled:opacity-50 flex items-center justify-center gap-2 cursor-pointer"
+              className="btn-primary w-full min-h-[48px] shadow-lg shadow-teal-700/25"
               id="register-submit-btn"
             >
               <Sparkles className="h-4 w-4" />
@@ -168,7 +168,7 @@ export default function RegisterPage() {
           </div>
         </form>
 
-        <div className="text-center pt-2 border-t border-slate-100 dark:border-slate-800/80 text-xs text-slate-500 dark:text-slate-400 font-medium">
+        <div className="text-center pt-2 border-t border-border text-xs text-muted-foreground font-medium">
           Already have an account?{' '}
           <Link href="/login" className="text-teal-700 dark:text-teal-400 hover:underline font-bold">
             Sign In here

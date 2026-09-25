@@ -253,10 +253,10 @@ export default function MyBookingsPage() {
                     </div>
 
                     {/* Actions */}
-                    <div className="flex items-center gap-3">
+                    <div className="flex flex-wrap sm:flex-nowrap items-center gap-2.5 pt-2 sm:pt-0">
                       <Link
                         href={`/services/${booking.service.id}`}
-                        className="px-4 py-2 rounded-xl text-xs font-semibold text-slate-700 dark:text-slate-300 bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 hover:text-slate-900 dark:hover:text-white border border-slate-200 dark:border-slate-700 transition-colors"
+                        className="btn-secondary flex-1 sm:flex-none text-xs text-center"
                       >
                         Service Details
                       </Link>
@@ -265,7 +265,7 @@ export default function MyBookingsPage() {
                         <button
                           type="button"
                           onClick={() => handleOpenCancelModal(booking)}
-                          className="px-4 py-2 rounded-xl text-xs font-semibold text-rose-600 dark:text-rose-400 bg-rose-50 hover:bg-rose-100 dark:bg-rose-500/10 dark:hover:bg-rose-500/20 border border-rose-200 dark:border-rose-500/30 transition-colors cursor-pointer"
+                          className="btn-destructive flex-1 sm:flex-none text-xs"
                         >
                           Cancel Booking
                         </button>

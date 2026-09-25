@@ -222,7 +222,7 @@ export function Navbar() {
             <ThemeToggle />
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2 rounded-xl text-slate-700 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition"
+              className="min-h-[44px] min-w-[44px] flex items-center justify-center rounded-xl text-foreground hover:bg-muted transition cursor-pointer"
               aria-label="Toggle Menu"
             >
               {mobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
@@ -233,13 +233,13 @@ export function Navbar() {
 
       {/* Mobile Menu Drawer */}
       {mobileMenuOpen && (
-        <div className="md:hidden border-t border-slate-200 dark:border-slate-800 bg-white/95 dark:bg-[#090e10]/95 backdrop-blur-xl px-4 pt-3 pb-6 space-y-3 animate-in fade-in duration-200 shadow-xl">
+        <div className="md:hidden border-t border-border bg-card/95 backdrop-blur-xl px-4 pt-3 pb-6 space-y-2 animate-in fade-in duration-200 shadow-xl">
           <Link
             href="/services"
             onClick={() => setMobileMenuOpen(false)}
-            className="block px-3 py-2 rounded-xl text-base font-medium text-slate-800 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800"
+            className="min-h-[44px] flex items-center px-3.5 py-2 rounded-xl text-sm font-semibold text-foreground hover:bg-muted transition"
           >
-            Browse Services
+            Browse All Services
           </Link>
 
           {user ? (
@@ -247,21 +247,21 @@ export function Navbar() {
               <Link
                 href="/dashboard"
                 onClick={() => setMobileMenuOpen(false)}
-                className="block px-3 py-2 rounded-xl text-base font-medium text-slate-800 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800"
+                className="min-h-[44px] flex items-center px-3.5 py-2 rounded-xl text-sm font-semibold text-foreground hover:bg-muted transition"
               >
-                User Dashboard
+                Customer Dashboard
               </Link>
               <Link
                 href="/dashboard/bookings"
                 onClick={() => setMobileMenuOpen(false)}
-                className="block px-3 py-2 rounded-xl text-base font-medium text-slate-800 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800"
+                className="min-h-[44px] flex items-center px-3.5 py-2 rounded-xl text-sm font-semibold text-foreground hover:bg-muted transition"
               >
                 My Bookings
               </Link>
               <Link
                 href="/dashboard/profile"
                 onClick={() => setMobileMenuOpen(false)}
-                className="block px-3 py-2 rounded-xl text-base font-medium text-slate-800 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800"
+                className="min-h-[44px] flex items-center px-3.5 py-2 rounded-xl text-sm font-semibold text-foreground hover:bg-muted transition"
               >
                 Profile Settings
               </Link>
@@ -269,7 +269,7 @@ export function Navbar() {
                 <Link
                   href="/admin"
                   onClick={() => setMobileMenuOpen(false)}
-                  className="block px-3 py-2 rounded-xl text-base font-semibold text-amber-700 bg-amber-50 border border-amber-200 dark:text-amber-400 dark:bg-amber-500/10 dark:border-amber-500/20"
+                  className="min-h-[44px] flex items-center px-3.5 py-2 rounded-xl text-sm font-bold text-amber-700 bg-amber-500/15 border border-amber-500/30 dark:text-amber-300 transition"
                 >
                   Admin Console
                 </Link>
@@ -279,24 +279,24 @@ export function Navbar() {
                   setMobileMenuOpen(false);
                   logout();
                 }}
-                className="w-full text-left px-3 py-2 rounded-xl text-base font-medium text-rose-600 dark:text-rose-400 hover:bg-rose-50 dark:hover:bg-rose-500/10"
+                className="min-h-[44px] w-full text-left px-3.5 py-2 rounded-xl text-sm font-semibold text-rose-600 dark:text-rose-400 hover:bg-rose-500/10 transition cursor-pointer"
               >
                 Sign Out ({user.name})
               </button>
             </>
           ) : (
-            <div className="pt-2 flex flex-col gap-2">
+            <div className="pt-2 flex flex-col gap-2.5">
               <Link
                 href="/login"
                 onClick={() => setMobileMenuOpen(false)}
-                className="w-full text-center px-4 py-2.5 rounded-xl text-base font-semibold text-slate-700 bg-slate-100 hover:bg-slate-200 dark:text-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700"
+                className="btn-secondary w-full text-center"
               >
                 Sign In
               </Link>
               <Link
                 href="/register"
                 onClick={() => setMobileMenuOpen(false)}
-                className="w-full text-center px-4 py-2.5 rounded-xl text-base font-semibold text-white bg-teal-700 hover:bg-teal-800 dark:bg-teal-600 dark:hover:bg-teal-500 shadow-md"
+                className="btn-primary w-full text-center"
               >
                 Create Free Account
               </Link>

@@ -92,43 +92,43 @@ export default function UserDashboardPage() {
     <div className="min-h-screen py-10 md:py-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
         {/* Welcome Header */}
-        <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 p-6 sm:p-8 rounded-3xl bg-linear-to-r from-teal-900 via-teal-800 to-slate-900 text-white shadow-xl border border-teal-800/60">
+        <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 p-6 sm:p-8 rounded-3xl bg-card border border-border shadow-md">
           <div className="space-y-2">
             <div className="flex items-center gap-2">
-              <span className="px-3 py-1 rounded-full text-[11px] font-extrabold uppercase tracking-wide bg-teal-500/20 text-teal-200 border border-teal-400/30">
-                {user.role} Dashboard
+              <span className="mono-index px-2.5 py-0.5 rounded-md text-[10px] font-bold uppercase bg-secondary text-foreground border border-border">
+                {user.role} DASHBOARD
               </span>
               {user.role === 'ADMIN' && (
                 <Link
                   href="/admin"
-                  className="px-3 py-1 rounded-full text-[11px] font-extrabold uppercase tracking-wide bg-amber-500/20 text-amber-200 border border-amber-400/30 hover:bg-amber-500/30 transition-colors"
+                  className="mono-index px-2.5 py-0.5 rounded-md text-[10px] font-bold uppercase bg-amber-500/15 text-amber-700 dark:text-amber-300 border border-amber-500/30 hover:bg-amber-500/25 transition-colors"
                 >
                   Admin Console &rarr;
                 </Link>
               )}
             </div>
-            <h1 className="text-2xl sm:text-4xl font-extrabold tracking-tight">
-              Welcome back, <span className="text-amber-300">{user.name}</span>
+            <h1 className="editorial-title text-2xl sm:text-4xl font-extrabold tracking-tight text-foreground">
+              Welcome back, <span className="text-teal-700 dark:text-teal-400">{user.name}</span>
             </h1>
-            <p className="text-xs sm:text-sm text-teal-100/80 font-medium">
+            <p className="text-xs sm:text-sm text-muted-foreground font-medium">
               Manage your scheduled service appointments and profile details.
             </p>
           </div>
 
-          <div className="flex items-center gap-3">
+          <div className="flex flex-wrap sm:flex-nowrap items-center gap-3">
             <Link
               href="/services"
-              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl font-bold text-xs uppercase tracking-wider text-slate-950 bg-amber-400 hover:bg-amber-300 shadow-md shadow-amber-400/20 transition-all hover:scale-[1.02] active:scale-[0.98] cursor-pointer"
+              className="btn-primary w-full sm:w-auto text-xs"
             >
               <PlusCircle className="h-4 w-4" />
               <span>Book New Service</span>
             </Link>
             <Link
               href="/dashboard/profile"
-              className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl font-semibold text-xs uppercase tracking-wider text-white bg-white/10 hover:bg-white/20 border border-white/20 transition-colors cursor-pointer"
+              className="btn-secondary w-full sm:w-auto text-xs"
             >
               <User className="h-4 w-4" />
-              <span>Profile</span>
+              <span>Profile Settings</span>
             </Link>
           </div>
         </div>

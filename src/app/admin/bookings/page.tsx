@@ -205,10 +205,85 @@ export default function AdminBookingsPage() {
           </div>
         </div>
 
-        {/* Bookings Table */}
-        <div className="rounded-2xl bg-white dark:bg-[#0f171a] border border-slate-200/90 dark:border-slate-800/80 overflow-hidden shadow-xs">
+        {/* Mobile Card-Based View (< 768px) */}
+        <div className="block md:hidden space-y-4">
+          {loading ? (
+            <div className="p-8 text-center text-muted-foreground text-xs">Loading bookings...</div>
+          ) : filteredBookings.length === 0 ? (
+            <div className="p-8 text-center text-muted-foreground text-xs">No customer bookings found.</div>
+          ) : (
+            filteredBookings.map((b) => (
+              <div key={b.id} className="p-5 rounded-2xl bg-card border border-border space-y-3.5 shadow-xs">
+                <div className="flex items-start justify-between gap-2">
+                  <div>
+                    <p className="font-bold text-foreground text-sm">{b.user.name}</p>
+                    <p className="text-xs text-muted-foreground">{b.user.email}</p>
+                    {b.user.phone && <p className="text-xs text-muted-foreground">{b.user.phone}</p>}
+                  </div>
+                  <StatusBadge status={b.status} />
+                </div>
+
+                <div className="p-3 rounded-xl bg-secondary/60 border border-border text-xs space-y-1.5">
+                  <div className="flex justify-between">
+                    <span className="text-muted-foreground">Service:</span>
+                    <span className="font-semibold text-foreground">{b.service.name}</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-muted-foreground">Arrival:</span>
+                    <span className="font-medium text-foreground">{formatDate(b.bookingDate)} ({b.timeSlot})</span>
+                  </div>
+                  <div className="flex justify-between font-bold">
+                    <span className="text-muted-foreground">Rate:</span>
+                    <span className="text-teal-700 dark:text-teal-400">{formatCurrency(b.totalPrice)}</span>
+                  </div>
+                </div>
+
+                <div className="pt-2 flex items-center gap-2">
+                  {b.status === 'COMPLETED' || b.status === 'CANCELLED' ? (
+                    <span className="flex-1 text-xs text-muted-foreground italic py-2">Terminal State</span>
+                  ) : (
+                    <select
+                      disabled={updatingId === b.id}
+                      value={b.status}
+                      onChange={(e) => handleStatusChange(b.id, e.target.value)}
+                      className="flex-1 min-h-[44px] py-2 px-3 rounded-xl bg-secondary border border-border text-xs text-foreground focus:outline-none focus:border-amber-400 font-medium cursor-pointer"
+                    >
+                      <option value={b.status} disabled>Change to...</option>
+                      {b.status === 'PENDING' && (
+                        <>
+                          <option value="CONFIRMED">Confirm Booking</option>
+                          <option value="CANCELLED">Cancel Booking</option>
+                        </>
+                      )}
+                      {b.status === 'CONFIRMED' && (
+                        <>
+                          <option value="COMPLETED">Mark as Completed</option>
+                          <option value="CANCELLED">Cancel Booking</option>
+                        </>
+                      )}
+                    </select>
+                  )}
+
+                  <button
+                    onClick={() => {
+                      setSelectedBooking(b);
+                      setDetailModalOpen(true);
+                    }}
+                    className="min-h-[44px] px-4 rounded-xl bg-secondary hover:bg-muted border border-border text-xs font-semibold text-foreground flex items-center justify-center gap-1.5 cursor-pointer"
+                  >
+                    <Eye className="h-4 w-4" />
+                    <span>Details</span>
+                  </button>
+                </div>
+              </div>
+            ))
+          )}
+        </div>
+
+        {/* Desktop Bookings Table (>= 768px) */}
+        <div className="hidden md:block rounded-2xl bg-card border border-border overflow-hidden shadow-xs">
           <div className="overflow-x-auto">
-            <table className="w-full text-left text-xs text-slate-600 dark:text-slate-300">
+            <table className="w-full text-left text-xs text-muted-foreground">
               <thead className="bg-slate-50 dark:bg-slate-950/80 text-slate-500 dark:text-slate-400 uppercase tracking-wider text-[10px] border-b border-slate-200 dark:border-slate-800 font-bold">
                 <tr>
                   <th className="px-6 py-4 font-bold">Customer</th>

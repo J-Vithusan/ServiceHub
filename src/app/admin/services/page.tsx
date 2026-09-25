@@ -318,10 +318,85 @@ export default function AdminServicesPage() {
           </div>
         </div>
 
-        {/* Services Table */}
-        <div className="rounded-2xl bg-white dark:bg-[#0f171a] border border-slate-200/90 dark:border-slate-800/80 overflow-hidden shadow-xs">
+        {/* Mobile Card-Based View (< 768px) */}
+        <div className="block md:hidden space-y-4">
+          {loading ? (
+            <div className="p-8 text-center text-muted-foreground text-xs">Loading services...</div>
+          ) : filteredServices.length === 0 ? (
+            <div className="p-8 text-center text-muted-foreground text-xs">
+              No services found. Click &quot;Add New Service&quot; to create one.
+            </div>
+          ) : (
+            filteredServices.map((svc) => (
+              <div key={svc.id} className="p-5 rounded-2xl bg-card border border-border space-y-3.5 shadow-xs">
+                <div className="flex items-start gap-3">
+                  <div className="h-14 w-14 rounded-xl bg-muted overflow-hidden shrink-0 border border-border">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src={
+                        svc.imageUrl ||
+                        'https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=150&q=80'
+                      }
+                      alt={svc.name}
+                      className="h-full w-full object-cover"
+                    />
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <div className="flex items-center justify-between gap-1 mb-1">
+                      <span className="mono-index text-[10px] text-teal-700 dark:text-teal-400 font-semibold truncate">
+                        {svc.category?.name || 'Unassigned'}
+                      </span>
+                      <button
+                        type="button"
+                        onClick={() => handleToggleStatus(svc)}
+                        className="cursor-pointer"
+                        title="Click to toggle status"
+                      >
+                        <StatusBadge status={svc.status} />
+                      </button>
+                    </div>
+                    <h3 className="font-bold text-foreground text-sm line-clamp-1">{svc.name}</h3>
+                    <p className="text-xs text-muted-foreground line-clamp-2 mt-0.5">{svc.description}</p>
+                  </div>
+                </div>
+
+                <div className="flex items-center justify-between pt-2 border-t border-border text-xs">
+                  <div className="flex items-center gap-3">
+                    <span className="font-black text-teal-700 dark:text-teal-400 text-sm">
+                      {formatCurrency(svc.price)}
+                    </span>
+                    <span className="text-muted-foreground">{svc.durationMinutes} mins</span>
+                  </div>
+
+                  <div className="flex items-center gap-2">
+                    <button
+                      onClick={() => handleOpenEditModal(svc)}
+                      className="min-h-[44px] px-3.5 rounded-xl bg-secondary hover:bg-muted border border-border text-xs font-semibold text-foreground flex items-center gap-1.5 cursor-pointer"
+                    >
+                      <Edit2 className="h-3.5 w-3.5" />
+                      <span>Edit</span>
+                    </button>
+                    <button
+                      onClick={() => {
+                        setServiceToDelete(svc);
+                        setDeleteModalOpen(true);
+                      }}
+                      className="min-h-[44px] px-3 rounded-xl bg-rose-500/10 hover:bg-rose-500/20 text-rose-600 dark:text-rose-400 border border-rose-500/20 text-xs flex items-center justify-center cursor-pointer"
+                      title="Delete Service"
+                    >
+                      <Trash2 className="h-3.5 w-3.5" />
+                    </button>
+                  </div>
+                </div>
+              </div>
+            ))
+          )}
+        </div>
+
+        {/* Desktop Services Table (>= 768px) */}
+        <div className="hidden md:block rounded-2xl bg-card border border-border overflow-hidden shadow-xs">
           <div className="overflow-x-auto">
-            <table className="w-full text-left text-xs text-slate-600 dark:text-slate-300">
+            <table className="w-full text-left text-xs text-muted-foreground">
               <thead className="bg-slate-50 dark:bg-slate-950/80 text-slate-500 dark:text-slate-400 uppercase tracking-wider text-[10px] border-b border-slate-200 dark:border-slate-800 font-bold">
                 <tr>
                   <th className="px-6 py-4 font-bold">Service</th>

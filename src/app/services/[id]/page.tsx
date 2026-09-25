@@ -290,21 +290,22 @@ export default function ServiceDetailPage() {
           {/* Right Column: Sticky Booking Widget */}
           <div className="lg:col-span-5">
             <div className="sticky top-24 p-6 sm:p-7 rounded-2xl bg-card border border-border shadow-xl space-y-6">
-              <div className="flex items-baseline justify-between border-b border-slate-100 dark:border-slate-800 pb-5">
+              <div className="flex items-baseline justify-between border-b border-border pb-5">
                 <div>
-                  <span className="text-[11px] uppercase font-bold tracking-wider text-slate-500 dark:text-slate-400">
-                    Transparent Rate
+                  <span className="mono-index text-[10px] text-muted-foreground font-semibold">
+                    TRANSPARENT FLAT RATE
                   </span>
                   <div className="flex items-baseline gap-1.5 mt-0.5">
-                    <span className="text-3xl font-extrabold text-slate-900 dark:text-white">
+                    <span className="editorial-title text-3xl font-black text-foreground">
                       {formatCurrency(service.price)}
                     </span>
-                    <span className="text-xs text-slate-500 dark:text-slate-400 font-medium">/ flat fee</span>
+                    <span className="text-xs text-muted-foreground font-medium">/ flat fee</span>
                   </div>
                 </div>
                 <div className="text-right">
-                  <span className="inline-block px-2.5 py-1 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200 dark:bg-emerald-950/60 dark:text-emerald-300 dark:border-emerald-800 text-xs font-bold">
-                    Available Now
+                  <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-emerald-500/10 text-emerald-700 dark:text-emerald-300 border border-emerald-500/20 text-xs font-bold">
+                    <span className="h-1.5 w-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                    Instant Dispatch
                   </span>
                 </div>
               </div>
@@ -329,11 +330,14 @@ export default function ServiceDetailPage() {
                 </div>
               ) : (
                 <form onSubmit={handleBookingSubmit} className="space-y-5">
-                  {/* Select Date */}
+                  {/* Step 1: Select Date */}
                   <div>
-                    <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300 mb-2">
-                      1. Select Appointment Date
-                    </label>
+                    <div className="flex items-center justify-between mb-2">
+                      <label className="block mono-index text-[11px] font-bold text-foreground">
+                        STEP 01 // SELECT DATE
+                      </label>
+                      <span className="text-[11px] text-muted-foreground">Earliest: Tomorrow</span>
+                    </div>
                     <div className="relative">
                       <input
                         type="date"
@@ -341,16 +345,16 @@ export default function ServiceDetailPage() {
                         value={bookingDate}
                         onChange={(e) => setBookingDate(e.target.value)}
                         required
-                        className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-sm text-slate-900 dark:text-white focus:outline-none focus:border-teal-600 focus:ring-2 focus:ring-teal-500/10 transition cursor-pointer font-medium"
+                        className="w-full h-11 px-3.5 rounded-xl bg-secondary border border-border text-sm text-foreground focus:outline-none focus:border-teal-500 focus:ring-2 focus:ring-teal-500/20 transition cursor-pointer font-medium"
                         id="booking-date-input"
                       />
                     </div>
                   </div>
 
-                  {/* Select Time Slot */}
+                  {/* Step 2: Choose Arrival Window (44px min touch target) */}
                   <div>
-                    <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300 mb-2">
-                      2. Choose Preferred Arrival Window
+                    <label className="block mono-index text-[11px] font-bold text-foreground mb-2">
+                      STEP 02 // ARRIVAL WINDOW
                     </label>
                     <div className="grid grid-cols-2 gap-2">
                       {AVAILABLE_TIME_SLOTS.map((slot) => (
@@ -358,10 +362,10 @@ export default function ServiceDetailPage() {
                           type="button"
                           key={slot}
                           onClick={() => setTimeSlot(slot)}
-                          className={`py-2 px-3 rounded-xl text-xs font-semibold transition-all text-center ${
+                          className={`min-h-[44px] py-2.5 px-3 rounded-xl text-xs font-semibold transition-all text-center flex items-center justify-center cursor-pointer ${
                             timeSlot === slot
-                              ? 'bg-teal-700 dark:bg-teal-600 text-white shadow-sm shadow-teal-700/20 border border-teal-700 dark:border-teal-600 font-bold'
-                              : 'bg-slate-50 dark:bg-slate-900/80 text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 border border-slate-200/90 dark:border-slate-700/60'
+                              ? 'bg-teal-700 dark:bg-teal-600 text-white shadow-sm border border-teal-700 dark:border-teal-600 font-bold scale-[1.02]'
+                              : 'bg-secondary text-foreground hover:bg-muted border border-border'
                           }`}
                         >
                           {slot}
@@ -370,58 +374,75 @@ export default function ServiceDetailPage() {
                     </div>
                   </div>
 
-                  {/* Special Instructions */}
+                  {/* Step 3: Special Instructions (Progressive / Optional) */}
                   <div>
-                    <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300 mb-2">
-                      3. Special Instructions or Notes (Optional)
+                    <label className="block mono-index text-[11px] font-bold text-foreground mb-2">
+                      STEP 03 // SITE INSTRUCTIONS (OPTIONAL)
                     </label>
                     <textarea
-                      rows={3}
-                      placeholder="e.g. Gate code, apartment number, specific focus area..."
+                      rows={2}
+                      placeholder="Gate code, parking instructions, or specific problem focus..."
                       value={notes}
                       onChange={(e) => setNotes(e.target.value)}
-                      className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-xs text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:border-teal-600 focus:ring-2 focus:ring-teal-500/10 transition"
+                      className="w-full p-3 rounded-xl bg-secondary border border-border text-xs text-foreground placeholder-muted-foreground focus:outline-none focus:border-teal-500 focus:ring-2 focus:ring-teal-500/20 transition"
                       id="booking-notes-input"
                     />
                   </div>
 
                   {/* Price Calculation Summary */}
-                  <div className="p-4 rounded-xl bg-slate-50 dark:bg-slate-900/60 border border-slate-200/80 dark:border-slate-800 space-y-2.5 text-xs">
-                    <div className="flex justify-between text-slate-600 dark:text-slate-400">
+                  <div className="p-4 rounded-xl bg-secondary/60 border border-border space-y-2.5 text-xs">
+                    <div className="flex justify-between text-muted-foreground">
                       <span>Service Flat Fee</span>
-                      <span className="font-semibold text-slate-900 dark:text-white">{formatCurrency(service.price)}</span>
+                      <span className="font-semibold text-foreground">{formatCurrency(service.price)}</span>
                     </div>
-                    <div className="flex justify-between text-slate-600 dark:text-slate-400">
-                      <span>Service Guarantee & Insurance</span>
+                    <div className="flex justify-between text-muted-foreground">
+                      <span>30-Day Workmanship Warranty</span>
                       <span className="text-emerald-600 dark:text-emerald-400 font-medium">Included ($0.00)</span>
                     </div>
-                    <div className="pt-2.5 border-t border-slate-200 dark:border-slate-800 flex justify-between font-bold text-slate-900 dark:text-white text-sm">
-                      <span>Total Amount Due</span>
-                      <span className="text-teal-700 dark:text-teal-400 font-extrabold">{formatCurrency(service.price)}</span>
+                    <div className="flex justify-between text-muted-foreground">
+                      <span>Direct Technician Dispatch</span>
+                      <span className="text-emerald-600 dark:text-emerald-400 font-medium">Included ($0.00)</span>
+                    </div>
+                    <div className="pt-2.5 border-t border-border flex justify-between font-bold text-foreground text-sm">
+                      <span>Total Guaranteed Rate</span>
+                      <span className="text-teal-700 dark:text-teal-400 font-extrabold text-base">
+                        {formatCurrency(service.price)}
+                      </span>
                     </div>
                   </div>
 
-                  {/* Submit / Auth CTA */}
+                  {/* Trust Signal: Prominent Free Cancellation Policy */}
+                  <div className="flex items-start gap-2.5 p-3 rounded-xl bg-teal-500/10 border border-teal-500/20 text-xs text-foreground">
+                    <ShieldCheck className="h-4 w-4 shrink-0 text-teal-700 dark:text-teal-400 mt-0.5" />
+                    <div>
+                      <p className="font-bold text-teal-800 dark:text-teal-300">Free Cancellation Guarantee</p>
+                      <p className="text-muted-foreground text-[11px] mt-0.5">
+                        Cancel penalty-free up to 24h prior to arrival. 100% instant refund with zero friction.
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* Fitts's Law Primary Action Button */}
                   {user ? (
                     <button
                       type="submit"
                       disabled={submitting || bookingSuccess}
-                      className="w-full py-3.5 rounded-xl font-bold text-sm text-white bg-teal-700 hover:bg-teal-800 dark:bg-teal-600 dark:hover:bg-teal-500 shadow-md shadow-teal-700/20 transition-all hover:scale-[1.01] active:scale-[0.99] disabled:opacity-50 flex items-center justify-center gap-2 cursor-pointer"
+                      className="w-full min-h-[52px] py-3.5 rounded-xl font-bold text-sm text-primary-foreground bg-teal-700 hover:bg-teal-800 dark:bg-teal-600 dark:hover:bg-teal-500 shadow-lg shadow-teal-700/25 transition-all hover:scale-[1.01] active:scale-[0.99] disabled:opacity-50 flex items-center justify-center gap-2 cursor-pointer"
                       id="confirm-booking-btn"
                     >
                       <CalendarIcon className="h-4 w-4" />
-                      <span>{submitting ? 'Confirming Appointment...' : 'Schedule & Confirm Booking'}</span>
+                      <span>{submitting ? 'Locking In Appointment...' : 'Confirm & Schedule Booking'}</span>
                     </button>
                   ) : (
                     <div className="space-y-2.5">
                       <Link
                         href={`/login?redirect=/services/${service.id}`}
-                        className="w-full py-3.5 rounded-xl font-bold text-sm text-white bg-teal-700 hover:bg-teal-800 dark:bg-teal-600 dark:hover:bg-teal-500 shadow-md shadow-teal-700/20 transition-all flex items-center justify-center gap-2 text-center"
+                        className="w-full min-h-[52px] py-3.5 rounded-xl font-bold text-sm text-primary-foreground bg-teal-700 hover:bg-teal-800 dark:bg-teal-600 dark:hover:bg-teal-500 shadow-lg shadow-teal-700/25 transition-all flex items-center justify-center gap-2 text-center"
                       >
                         <Lock className="h-4 w-4" />
                         <span>Sign In to Complete Booking</span>
                       </Link>
-                      <p className="text-[11px] text-center text-slate-500 dark:text-slate-400 font-medium">
+                      <p className="text-[11px] text-center text-muted-foreground font-medium">
                         Don&apos;t have an account?{' '}
                         <Link href="/register" className="text-teal-700 dark:text-teal-400 font-semibold hover:underline">
                           Create one in 30 seconds

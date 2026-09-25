@@ -1,25 +1,34 @@
 import type { Metadata } from 'next';
-import { Geist, Geist_Mono } from 'next/font/google';
+import { Plus_Jakarta_Sans, Inter, Geist_Mono } from 'next/font/google';
 import './globals.css';
 import { AuthProvider } from '@/context/AuthContext';
 import { ThemeProvider } from '@/context/ThemeContext';
 import { Navbar } from '@/components/Navbar';
 import { Footer } from '@/components/Footer';
 
-const geistSans = Geist({
-  variable: '--font-geist-sans',
+const plusJakartaSans = Plus_Jakarta_Sans({
+  variable: '--font-display',
   subsets: ['latin'],
+  weight: ['400', '500', '600', '700', '800'],
+  display: 'swap',
+});
+
+const inter = Inter({
+  variable: '--font-sans',
+  subsets: ['latin'],
+  display: 'swap',
 });
 
 const geistMono = Geist_Mono({
   variable: '--font-geist-mono',
   subsets: ['latin'],
+  display: 'swap',
 });
 
 export const metadata: Metadata = {
-  title: 'ServiceHub — Modern Full-Stack Service Booking Platform',
+  title: 'ServiceHub — Trusted Professional Home & Commercial Service Booking',
   description:
-    'Book verified, licensed home and commercial service specialists in seconds. Real-time availability, guaranteed satisfaction, and seamless booking management.',
+    'Book verified, licensed home and commercial service specialists in seconds. Transparent flat-rate pricing, 30-day workmanship guarantee, and real-time slot scheduling.',
   keywords: [
     'services',
     'booking',
@@ -37,7 +46,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" suppressHydrationWarning className={`${geistSans.variable} ${geistMono.variable} h-full`}>
+    <html
+      lang="en"
+      suppressHydrationWarning
+      className={`${inter.variable} ${plusJakartaSans.variable} ${geistMono.variable} h-full`}
+    >
       <head>
         <script
           dangerouslySetInnerHTML={{
@@ -57,7 +70,7 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className="min-h-screen flex flex-col bg-slate-50 text-slate-900 dark:bg-[#090e10] dark:text-slate-100 antialiased selection:bg-teal-600 selection:text-white transition-colors duration-200">
+      <body className="font-sans min-h-screen flex flex-col bg-background text-foreground antialiased selection:bg-teal-600 selection:text-white transition-colors duration-200">
         <ThemeProvider>
           <AuthProvider>
             <Navbar />
