@@ -171,7 +171,7 @@ async function main() {
       price: 135.0,
       durationMinutes: 90,
       status: 'ACTIVE',
-      imageUrl: 'https://images.unsplash.com/photo-1631545648833-286f0ff524df?auto=format&fit=crop&w=800&q=80',
+      imageUrl: 'https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&w=800&q=80',
     },
     {
       categoryId: categories['appliance-repair'].id,

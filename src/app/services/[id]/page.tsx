@@ -208,7 +208,7 @@ export default function ServiceDetailPage() {
             <div className="space-y-3">
               <div className="flex flex-wrap items-center gap-2">
                 {service.category && (
-                  <span className="px-3 py-1 rounded-full text-xs font-bold bg-teal-50 text-teal-800 border border-teal-200 dark:bg-teal-950/60 dark:text-teal-300 dark:border-teal-800/80">
+                  <span className="mono-index px-3 py-1 rounded-md text-[11px] font-bold bg-secondary text-foreground border border-border">
                     {service.category.name}
                   </span>
                 )}
@@ -219,13 +219,13 @@ export default function ServiceDetailPage() {
                 </div>
               </div>
 
-              <h1 className="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight">
+              <h1 className="editorial-title text-3xl sm:text-4xl lg:text-5xl font-black text-foreground tracking-tight">
                 {service.name}
               </h1>
 
-              <div className="flex items-center gap-4 text-sm text-slate-600 dark:text-slate-400 pt-1">
+              <div className="flex items-center gap-4 text-sm text-muted-foreground pt-1">
                 <div className="flex items-center gap-1.5">
-                  <Clock className="h-4 w-4 text-teal-600 dark:text-teal-400" />
+                  <Clock className="h-4 w-4 text-teal-700 dark:text-teal-400" />
                   <span>Estimated Duration: {service.durationMinutes} minutes</span>
                 </div>
                 <div className="flex items-center gap-1.5 text-emerald-600 dark:text-emerald-400 font-medium">
@@ -236,7 +236,7 @@ export default function ServiceDetailPage() {
             </div>
 
             {/* Featured Image */}
-            <div className="relative aspect-[16/10] w-full rounded-2xl overflow-hidden border border-slate-200/90 dark:border-slate-800 bg-slate-100 dark:bg-slate-900 shadow-md">
+            <div className="relative aspect-[16/10] w-full rounded-2xl overflow-hidden border border-border bg-muted shadow-md">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src={
@@ -246,41 +246,41 @@ export default function ServiceDetailPage() {
                 alt={service.name}
                 className="h-full w-full object-cover"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-slate-950/60 via-transparent to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
             </div>
 
             {/* Service Description */}
-            <div className="space-y-4 p-6 sm:p-7 rounded-2xl bg-white dark:bg-[#0f171a] border border-slate-200/90 dark:border-slate-800/80 shadow-xs">
-              <h2 className="text-base sm:text-lg font-bold text-slate-900 dark:text-white flex items-center gap-2">
-                <Info className="h-5 w-5 text-teal-600 dark:text-teal-400" />
+            <div className="space-y-4 p-6 sm:p-7 rounded-2xl bg-card border border-border shadow-xs">
+              <h2 className="text-base sm:text-lg font-bold text-foreground flex items-center gap-2">
+                <Info className="h-5 w-5 text-teal-700 dark:text-teal-400" />
                 Service Overview
               </h2>
-              <p className="text-sm text-slate-600 dark:text-slate-300 leading-relaxed whitespace-pre-line">
+              <p className="text-sm text-muted-foreground leading-relaxed whitespace-pre-line">
                 {service.description}
               </p>
             </div>
 
             {/* What's Included */}
-            <div className="space-y-4 p-6 sm:p-7 rounded-2xl bg-white dark:bg-[#0f171a] border border-slate-200/90 dark:border-slate-800/80 shadow-xs">
-              <h2 className="text-base sm:text-lg font-bold text-slate-900 dark:text-white flex items-center gap-2">
+            <div className="space-y-4 p-6 sm:p-7 rounded-2xl bg-card border border-border shadow-xs">
+              <h2 className="text-base sm:text-lg font-bold text-foreground flex items-center gap-2">
                 <Sparkles className="h-5 w-5 text-amber-500" />
                 Service Standards & Guarantees
               </h2>
-              <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 text-xs text-slate-600 dark:text-slate-300 font-medium">
+              <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 text-xs text-muted-foreground font-medium">
                 <li className="flex items-center gap-2.5">
-                  <CheckCircle2 className="h-4 w-4 text-teal-600 dark:text-teal-400 shrink-0" />
+                  <CheckCircle2 className="h-4 w-4 text-teal-700 dark:text-teal-400 shrink-0" />
                   <span>Certified and background-checked technician</span>
                 </li>
                 <li className="flex items-center gap-2.5">
-                  <CheckCircle2 className="h-4 w-4 text-teal-600 dark:text-teal-400 shrink-0" />
+                  <CheckCircle2 className="h-4 w-4 text-teal-700 dark:text-teal-400 shrink-0" />
                   <span>Commercial-grade tools & eco-safe materials</span>
                 </li>
                 <li className="flex items-center gap-2.5">
-                  <CheckCircle2 className="h-4 w-4 text-teal-600 dark:text-teal-400 shrink-0" />
+                  <CheckCircle2 className="h-4 w-4 text-teal-700 dark:text-teal-400 shrink-0" />
                   <span>Complete cleanup and debris disposal</span>
                 </li>
                 <li className="flex items-center gap-2.5">
-                  <CheckCircle2 className="h-4 w-4 text-teal-600 dark:text-teal-400 shrink-0" />
+                  <CheckCircle2 className="h-4 w-4 text-teal-700 dark:text-teal-400 shrink-0" />
                   <span>30-day workmanship guarantee</span>
                 </li>
               </ul>
@@ -289,7 +289,7 @@ export default function ServiceDetailPage() {
 
           {/* Right Column: Sticky Booking Widget */}
           <div className="lg:col-span-5">
-            <div className="sticky top-24 p-6 sm:p-7 rounded-2xl bg-white dark:bg-[#0f171a] border border-slate-200/90 dark:border-slate-800/80 shadow-xl shadow-slate-900/5 dark:shadow-black/40 space-y-6">
+            <div className="sticky top-24 p-6 sm:p-7 rounded-2xl bg-card border border-border shadow-xl space-y-6">
               <div className="flex items-baseline justify-between border-b border-slate-100 dark:border-slate-800 pb-5">
                 <div>
                   <span className="text-[11px] uppercase font-bold tracking-wider text-slate-500 dark:text-slate-400">

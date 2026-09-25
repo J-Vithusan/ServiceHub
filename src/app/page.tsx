@@ -11,9 +11,11 @@ import {
   ArrowRight,
   Star,
   CheckCircle2,
-  Users,
+  ArrowUpRight,
+  Layers,
   CalendarCheck,
   Award,
+  Zap,
 } from 'lucide-react';
 
 export const revalidate = 0; // Dynamic data
@@ -90,166 +92,158 @@ export default async function HomePage() {
     await getLandingData();
 
   return (
-    <div className="flex flex-col min-h-screen">
-      {/* Hero Section */}
-      <section className="relative overflow-hidden pt-16 pb-24 md:pt-28 md:pb-36">
-        {/* Subtle ambient lighting tailored for Deep Teal */}
-        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[360px] bg-teal-600/10 dark:bg-teal-500/12 rounded-full blur-[140px] pointer-events-none" />
-        <div className="absolute top-1/3 right-10 w-[300px] h-[250px] bg-amber-500/10 dark:bg-amber-400/8 rounded-full blur-[120px] pointer-events-none" />
+    <div className="flex flex-col min-h-screen bg-background text-foreground transition-colors duration-200">
+      {/* Editorial Hero Section */}
+      <section className="relative overflow-hidden pt-20 pb-28 md:pt-32 md:pb-40 border-b border-border/80">
+        {/* Subtle architectural ambient gradient (Nordic Teal glow) */}
+        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[720px] h-[340px] bg-teal-600/[0.08] dark:bg-teal-400/[0.06] rounded-full blur-[140px] pointer-events-none" />
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="text-center max-w-3xl mx-auto space-y-7">
-            {/* Pill badge */}
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-teal-50 text-teal-800 border border-teal-200/80 dark:bg-teal-950/40 dark:text-teal-300 dark:border-teal-500/30 text-xs font-semibold shadow-2xs backdrop-blur-md">
-              <Sparkles className="h-3.5 w-3.5 text-amber-500" />
-              <span>Certified Domestic & Commercial Service Dispatch</span>
+          <div className="flex flex-col max-w-4xl space-y-8">
+            {/* Monospace Editorial Section Index */}
+            <div className="flex items-center gap-3">
+              <span className="mono-index text-teal-700 dark:text-teal-400 font-semibold tracking-widest">
+                00 // PLATFORM DISPATCH PROTOCOL
+              </span>
+              <span className="h-px w-12 bg-border" />
+              <span className="mono-index text-muted-foreground hidden sm:inline">
+                EST. 2026 — SYSTEM VERIFIED
+              </span>
             </div>
 
-            {/* Main Headline */}
-            <h1 className="text-4xl sm:text-6xl font-black tracking-tight text-slate-900 dark:text-white leading-[1.08]">
-              Expert Services On Demand,{' '}
-              <span className="gradient-heading">Scheduled in Seconds.</span>
+            {/* Oversized Display Typography */}
+            <h1 className="editorial-title text-5xl sm:text-7xl lg:text-[5.5rem] font-black tracking-[-0.04em] text-foreground leading-[0.93]">
+              PRECISION CRAFT.{' '}
+              <span className="text-teal-700 dark:text-teal-400">
+                DISPATCHED ON DEMAND.
+              </span>
             </h1>
 
-            {/* Subheadline */}
-            <p className="text-base sm:text-lg text-slate-600 dark:text-slate-400 leading-relaxed max-w-2xl mx-auto font-normal">
-              From licensed plumbers and certified electricians to professional deep-cleaners,
-              ServiceHub provides vetted craftspeople with real-time slot availability and guaranteed workmanship.
+            {/* Subheadline with Generous Spacing */}
+            <p className="text-lg sm:text-xl text-muted-foreground leading-relaxed max-w-2xl font-normal">
+              An architectural standard for domestic and commercial services. Licensed tradespeople,
+              transparent flat rates, and verified real-time appointment windows.
             </p>
 
-            {/* Action Buttons */}
-            <div className="pt-2 flex flex-col sm:flex-row items-center justify-center gap-4">
+            {/* Action Buttons & Micro-Interactions */}
+            <div className="pt-2 flex flex-col sm:flex-row items-stretch sm:items-center gap-4">
               <Link
                 href="/services"
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-xl font-bold text-sm text-white bg-teal-700 hover:bg-teal-800 dark:bg-teal-600 dark:hover:bg-teal-500 shadow-md shadow-teal-700/20 transition-all hover:scale-105 active:scale-95"
+                className="inline-flex items-center justify-center gap-3 px-8 py-4 rounded-xl font-bold text-sm text-primary-foreground bg-teal-700 hover:bg-teal-800 dark:bg-teal-600 dark:hover:bg-teal-500 shadow-md shadow-teal-700/20 transition-all hover:scale-[1.02] active:scale-[0.98] group"
               >
-                <span>Browse All Offerings</span>
-                <ArrowRight className="h-4 w-4" />
+                <span>Browse All Specifications</span>
+                <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
               </Link>
               <Link
                 href="/login"
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-xl font-semibold text-sm text-slate-700 bg-white hover:bg-slate-50 border border-slate-200/90 shadow-2xs dark:text-slate-300 dark:bg-slate-900/80 dark:hover:bg-slate-800 dark:hover:text-white dark:border-slate-800 transition"
+                className="inline-flex items-center justify-center gap-2 px-7 py-4 rounded-xl font-semibold text-sm text-foreground bg-card hover:bg-muted/80 border border-border transition-all hover:border-teal-500/40"
               >
                 <span>Sign In to Account</span>
+                <ArrowUpRight className="h-4 w-4 text-muted-foreground group-hover:text-foreground" />
               </Link>
             </div>
 
-            {/* Social Proof Badges */}
-            <div className="pt-6 flex flex-wrap items-center justify-center gap-6 text-xs text-slate-600 dark:text-slate-400 font-medium">
-              <div className="flex items-center gap-1.5">
-                <ShieldCheck className="h-4 w-4 text-teal-600 dark:text-teal-400" />
-                <span>Licensed & Insured</span>
+            {/* Architectural Trust Indicators */}
+            <div className="pt-8 border-t border-border/80 grid grid-cols-1 sm:grid-cols-3 gap-6 text-xs text-muted-foreground">
+              <div className="flex items-center gap-2.5">
+                <ShieldCheck className="h-4 w-4 text-teal-700 dark:text-teal-400 shrink-0" />
+                <span className="font-medium">100% Background-Vetted & Insured</span>
               </div>
-              <div className="flex items-center gap-1.5">
-                <Clock className="h-4 w-4 text-amber-600 dark:text-amber-400" />
-                <span>Instant Confirmation</span>
+              <div className="flex items-center gap-2.5">
+                <Clock className="h-4 w-4 text-teal-700 dark:text-teal-400 shrink-0" />
+                <span className="font-medium">Instant Slot Locking Guarantee</span>
               </div>
-              <div className="flex items-center gap-1.5">
-                <Star className="h-4 w-4 text-amber-500 fill-amber-500" />
-                <span>4.9 / 5 Customer Rating</span>
+              <div className="flex items-center gap-2.5">
+                <Award className="h-4 w-4 text-teal-700 dark:text-teal-400 shrink-0" />
+                <span className="font-medium">30-Day Workmanship Warranty</span>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Stats Counter Bar */}
-      <section className="border-y border-slate-200/90 dark:border-slate-800 bg-white/70 dark:bg-[#0c1316]/70 py-10 transition-colors duration-200">
+      {/* Section 01: Service Categories Architectural Grid */}
+      <section className="py-24 md:py-36 border-b border-border/80">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-            <div>
-              <p className="text-3xl sm:text-4xl font-black text-slate-900 dark:text-white">{bookingCount}+</p>
-              <p className="text-xs uppercase tracking-wider text-slate-500 dark:text-slate-400 font-semibold mt-1">
-                Completed Appointments
-              </p>
-            </div>
-            <div>
-              <p className="text-3xl sm:text-4xl font-black text-teal-700 dark:text-teal-400">{servicesCount}+</p>
-              <p className="text-xs uppercase tracking-wider text-slate-500 dark:text-slate-400 font-semibold mt-1">
-                Active Catalog Services
-              </p>
-            </div>
-            <div>
-              <p className="text-3xl sm:text-4xl font-black text-amber-600 dark:text-amber-400">{customersCount}+</p>
-              <p className="text-xs uppercase tracking-wider text-slate-500 dark:text-slate-400 font-semibold mt-1">
-                Satisfied Clients
-              </p>
-            </div>
-            <div>
-              <p className="text-3xl sm:text-4xl font-black text-emerald-600 dark:text-emerald-400">99.4%</p>
-              <p className="text-xs uppercase tracking-wider text-slate-500 dark:text-slate-400 font-semibold mt-1">
-                Satisfaction Guarantee
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Service Categories Section */}
-      <section className="py-20 md:py-28">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
-            <div>
-              <span className="text-xs font-bold uppercase tracking-wider text-teal-700 dark:text-teal-400">
-                Explore Domains
-              </span>
-              <h2 className="text-2xl sm:text-3xl font-black text-slate-900 dark:text-white mt-1">
-                Popular Categories
+          {/* Section Header */}
+          <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
+            <div className="space-y-2">
+              <div className="mono-index text-teal-700 dark:text-teal-400 font-semibold tracking-widest">
+                01 // TRADE DISCIPLINES
+              </div>
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-[-0.03em] text-foreground">
+                Verified Service Categories
               </h2>
             </div>
             <Link
               href="/services"
-              className="text-sm font-semibold text-teal-700 hover:text-teal-800 dark:text-teal-400 dark:hover:text-teal-300 flex items-center gap-1 group"
+              className="mono-index text-xs font-bold text-teal-700 hover:text-teal-800 dark:text-teal-400 dark:hover:text-teal-300 flex items-center gap-2 group tracking-widest"
             >
-              <span>View all categories</span>
-              <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
+              <span>EXPLORE FULL DIRECTORY</span>
+              <ArrowRight className="h-3.5 w-3.5 group-hover:translate-x-1 transition-transform" />
             </Link>
           </div>
 
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
-            {categories.map((cat: LandingCategory) => (
+          {/* Architectural Categories Grid */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {categories.map((cat: LandingCategory, idx: number) => (
               <Link
                 key={cat.id}
                 href={`/services?category=${cat.slug}`}
-                className="group p-5 rounded-2xl bg-white border border-slate-200/90 hover:border-teal-500/50 shadow-2xs hover:shadow-md dark:bg-[#0e1619] dark:border-slate-800 dark:hover:border-teal-500/40 transition-all duration-200 flex flex-col items-center text-center hover:-translate-y-1"
+                className="group p-8 rounded-2xl bg-card border border-border hover:border-teal-500/50 transition-all duration-300 flex flex-col justify-between interactive-card"
               >
-                <div className="h-12 w-12 rounded-xl bg-teal-50 border border-teal-200/80 text-teal-700 dark:bg-teal-950/40 dark:border-teal-500/30 dark:text-teal-400 flex items-center justify-center mb-3 group-hover:bg-teal-700 group-hover:text-white dark:group-hover:bg-teal-600 transition-colors">
-                  <Wrench className="h-5 w-5" />
+                <div>
+                  <div className="flex items-center justify-between mb-6">
+                    <span className="mono-index text-muted-foreground text-[10px]">
+                      DISCIPLINE_0{idx + 1}
+                    </span>
+                    <div className="h-10 w-10 rounded-xl bg-teal-500/10 text-teal-700 dark:text-teal-400 flex items-center justify-center group-hover:bg-teal-700 group-hover:text-white dark:group-hover:bg-teal-600 transition-colors">
+                      <Wrench className="h-4 w-4" />
+                    </div>
+                  </div>
+                  <h3 className="text-xl font-bold text-foreground group-hover:text-teal-700 dark:group-hover:text-teal-400 transition-colors mb-2">
+                    {cat.name}
+                  </h3>
+                  <p className="text-xs text-muted-foreground line-clamp-2 leading-relaxed">
+                    Certified specialists ready for rapid deployment with guaranteed tooling.
+                  </p>
                 </div>
-                <h3 className="text-sm font-bold text-slate-900 dark:text-white group-hover:text-teal-700 dark:group-hover:text-teal-400 transition-colors line-clamp-1">
-                  {cat.name}
-                </h3>
-                <span className="text-[11px] text-slate-500 dark:text-slate-400 mt-1">
-                  {cat._count?.services || 0} services
-                </span>
+
+                <div className="pt-6 mt-6 border-t border-border flex items-center justify-between">
+                  <span className="mono-index text-[11px] text-muted-foreground">
+                    {cat._count?.services || 0} ACTIVE SPECS
+                  </span>
+                  <ArrowRight className="h-4 w-4 text-muted-foreground group-hover:text-teal-700 dark:group-hover:text-teal-400 group-hover:translate-x-1 transition-all" />
+                </div>
               </Link>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Featured Services Grid */}
-      <section className="py-20 md:py-28 bg-slate-100/60 dark:bg-[#070b0c]/60 border-y border-slate-200/90 dark:border-slate-800 transition-colors duration-200">
+      {/* Section 02: Featured Services Grid */}
+      <section className="py-24 md:py-36 bg-secondary/40 border-b border-border/80">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
-            <div>
-              <span className="text-xs font-bold uppercase tracking-wider text-amber-600 dark:text-amber-400">
-                Top Rated Offerings
-              </span>
-              <h2 className="text-2xl sm:text-3xl font-black text-slate-900 dark:text-white mt-1">
+          {/* Section Header */}
+          <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
+            <div className="space-y-2">
+              <div className="mono-index text-teal-700 dark:text-teal-400 font-semibold tracking-widest">
+                02 // CURATED SPECIFICATIONS
+              </div>
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-[-0.03em] text-foreground">
                 Featured Verified Services
               </h2>
             </div>
             <Link
               href="/services"
-              className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl text-xs font-bold uppercase tracking-wider text-slate-700 bg-white hover:bg-slate-50 border border-slate-200/90 shadow-2xs dark:text-slate-300 dark:bg-slate-800 dark:hover:bg-slate-700 dark:hover:text-white dark:border-slate-700 transition"
+              className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl mono-index text-xs font-bold text-foreground bg-card hover:bg-muted border border-border transition-colors tracking-wider"
             >
-              <span>Explore All</span>
+              <span>VIEW ALL ACTIVE</span>
               <ArrowRight className="h-3.5 w-3.5" />
             </Link>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {featuredServices.map((service: LandingService) => (
               <ServiceCard
                 key={service.id}
@@ -268,70 +262,144 @@ export default async function HomePage() {
         </div>
       </section>
 
-      {/* How It Works Section */}
-      <section className="py-20 md:py-32">
+      {/* Section 03: Operational Workflow / Protocol */}
+      <section className="py-24 md:py-36 border-b border-border/80">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-2xl mx-auto mb-16 space-y-3">
-            <span className="text-xs font-bold uppercase tracking-wider text-teal-700 dark:text-teal-400">
-              Simple 3-Step Process
-            </span>
-            <h2 className="text-3xl font-black text-slate-900 dark:text-white">How ServiceHub Works</h2>
-            <p className="text-sm text-slate-500 dark:text-slate-400">
-              Booking professional domestic and commercial maintenance should never be complicated.
+          <div className="max-w-2xl mb-16 space-y-3">
+            <div className="mono-index text-teal-700 dark:text-teal-400 font-semibold tracking-widest">
+              03 // OPERATIONAL PROTOCOL
+            </div>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-[-0.03em] text-foreground">
+              How Dispatch Operates
+            </h2>
+            <p className="text-base text-muted-foreground font-normal leading-relaxed pt-1">
+              Engineered to eliminate friction between diagnosis, transparent booking, and certified completion.
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="p-8 rounded-3xl bg-white border border-slate-200/90 shadow-xs dark:bg-[#0e1619] dark:border-slate-800 relative transition-all">
-              <div className="h-12 w-12 rounded-2xl bg-teal-50 border border-teal-200/80 text-teal-700 dark:bg-teal-950/40 dark:border-teal-500/30 dark:text-teal-400 flex items-center justify-center text-lg font-black mb-6">
-                01
+            {/* Step 1 */}
+            <div className="p-8 rounded-2xl bg-card border border-border relative flex flex-col justify-between interactive-card">
+              <div>
+                <span className="mono-index text-teal-700 dark:text-teal-400 text-xs font-bold tracking-widest block mb-6">
+                  PHASE // 01
+                </span>
+                <h3 className="text-xl font-bold text-foreground mb-3">Select Specification</h3>
+                <p className="text-sm text-muted-foreground leading-relaxed">
+                  Browse by licensed trade, review transparent fixed rates, and inspect verified pro track records.
+                </p>
               </div>
-              <h3 className="text-base font-bold text-slate-900 dark:text-white mb-2">Select Your Service</h3>
-              <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
-                Filter by trade specialty, transparent flat pricing, and verified reviews to pick the exact service you need.
-              </p>
+              <div className="pt-6 mt-8 border-t border-border flex items-center justify-between text-xs text-muted-foreground">
+                <span>Fixed Rate Guarantee</span>
+                <CheckCircle2 className="h-4 w-4 text-teal-700 dark:text-teal-400" />
+              </div>
             </div>
 
-            <div className="p-8 rounded-3xl bg-white border border-slate-200/90 shadow-xs dark:bg-[#0e1619] dark:border-slate-800 relative transition-all">
-              <div className="h-12 w-12 rounded-2xl bg-amber-50 border border-amber-200/80 text-amber-700 dark:bg-amber-950/40 dark:border-amber-500/30 dark:text-amber-400 flex items-center justify-center text-lg font-black mb-6">
-                02
+            {/* Step 2 */}
+            <div className="p-8 rounded-2xl bg-card border border-border relative flex flex-col justify-between interactive-card">
+              <div>
+                <span className="mono-index text-teal-700 dark:text-teal-400 text-xs font-bold tracking-widest block mb-6">
+                  PHASE // 02
+                </span>
+                <h3 className="text-xl font-bold text-foreground mb-3">Lock Arrival Window</h3>
+                <p className="text-sm text-muted-foreground leading-relaxed">
+                  Choose your preferred date and slot. Dynamic concurrency checking prevents double bookings.
+                </p>
               </div>
-              <h3 className="text-base font-bold text-slate-900 dark:text-white mb-2">Pick Date & Time Window</h3>
-              <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
-                Choose an available slot on the calendar. Real-time slot management prevents double-booking.
-              </p>
+              <div className="pt-6 mt-8 border-t border-border flex items-center justify-between text-xs text-muted-foreground">
+                <span>Real-Time Slot Engine</span>
+                <CalendarCheck className="h-4 w-4 text-teal-700 dark:text-teal-400" />
+              </div>
             </div>
 
-            <div className="p-8 rounded-3xl bg-white border border-slate-200/90 shadow-xs dark:bg-[#0e1619] dark:border-slate-800 relative transition-all">
-              <div className="h-12 w-12 rounded-2xl bg-emerald-50 border border-emerald-200/80 text-emerald-700 dark:bg-emerald-950/40 dark:border-emerald-500/30 dark:text-emerald-400 flex items-center justify-center text-lg font-black mb-6">
-                03
+            {/* Step 3 */}
+            <div className="p-8 rounded-2xl bg-card border border-border relative flex flex-col justify-between interactive-card">
+              <div>
+                <span className="mono-index text-teal-700 dark:text-teal-400 text-xs font-bold tracking-widest block mb-6">
+                  PHASE // 03
+                </span>
+                <h3 className="text-xl font-bold text-foreground mb-3">Certified Execution</h3>
+                <p className="text-sm text-muted-foreground leading-relaxed">
+                  A licensed contractor arrives equipped with industrial tooling, backed by our 30-day warranty.
+                </p>
               </div>
-              <h3 className="text-base font-bold text-slate-900 dark:text-white mb-2">Certified Specialist Delivers</h3>
-              <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
-                A background-checked, insured contractor arrives punctually and completes the job with guaranteed satisfaction.
+              <div className="pt-6 mt-8 border-t border-border flex items-center justify-between text-xs text-muted-foreground">
+                <span>Post-Service Sign-Off</span>
+                <ShieldCheck className="h-4 w-4 text-teal-700 dark:text-teal-400" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Section 04: Platform Metrics Bar */}
+      <section className="py-20 md:py-28 bg-card border-b border-border/80">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="mono-index text-muted-foreground text-xs mb-10 tracking-widest">
+            04 // PROVEN DISPATCH METRICS
+          </div>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12">
+            <div>
+              <p className="text-4xl sm:text-5xl font-black text-foreground tracking-tight">
+                {bookingCount}+
+              </p>
+              <p className="mono-index text-[11px] text-muted-foreground font-semibold mt-2">
+                FULFILLED BOOKINGS
+              </p>
+            </div>
+            <div>
+              <p className="text-4xl sm:text-5xl font-black text-teal-700 dark:text-teal-400 tracking-tight">
+                {servicesCount}+
+              </p>
+              <p className="mono-index text-[11px] text-muted-foreground font-semibold mt-2">
+                VERIFIED SERVICES
+              </p>
+            </div>
+            <div>
+              <p className="text-4xl sm:text-5xl font-black text-foreground tracking-tight">
+                {customersCount}+
+              </p>
+              <p className="mono-index text-[11px] text-muted-foreground font-semibold mt-2">
+                ACTIVE CLIENTS
+              </p>
+            </div>
+            <div>
+              <p className="text-4xl sm:text-5xl font-black text-teal-700 dark:text-teal-400 tracking-tight">
+                99.4%
+              </p>
+              <p className="mono-index text-[11px] text-muted-foreground font-semibold mt-2">
+                CLIENT SATISFACTION
               </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Final Call to Action */}
-      <section className="py-20 md:py-28 bg-gradient-to-b from-teal-50/50 to-white border-t border-slate-200/90 dark:from-[#0d171a] dark:to-[#070b0c] dark:border-slate-800 transition-colors duration-200">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6">
-          <h2 className="text-3xl sm:text-4xl font-black text-slate-900 dark:text-white">
-            Ready to experience dependable service scheduling?
-          </h2>
-          <p className="text-sm text-slate-600 dark:text-slate-400 max-w-xl mx-auto leading-relaxed">
-            Join hundreds of satisfied property owners who rely on ServiceHub for every maintenance need, big or small.
-          </p>
-          <div className="pt-2">
-            <Link
-              href="/services"
-              className="inline-flex items-center gap-2 px-8 py-3.5 rounded-xl font-bold text-sm text-white bg-teal-700 hover:bg-teal-800 dark:bg-teal-600 dark:hover:bg-teal-500 shadow-md shadow-teal-700/20 transition-all hover:scale-105 active:scale-95"
-            >
-              <span>Explore Catalog Now</span>
-              <ArrowRight className="h-4 w-4" />
-            </Link>
+      {/* Section 05: Final Editorial CTA */}
+      <section className="py-24 md:py-36">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="p-10 sm:p-16 rounded-3xl bg-secondary/50 border border-border space-y-8 relative overflow-hidden">
+            <div className="mono-index text-teal-700 dark:text-teal-400 text-xs font-semibold tracking-widest">
+              05 // DIRECT DISPATCH INITIATION
+            </div>
+            <h2 className="editorial-title text-3xl sm:text-5xl lg:text-6xl font-black text-foreground leading-[0.96]">
+              Engineered for dependability.{' '}
+              <span className="text-teal-700 dark:text-teal-400">
+                Ready for immediate booking.
+              </span>
+            </h2>
+            <p className="text-base text-muted-foreground max-w-xl leading-relaxed">
+              Experience the difference of structured domestic maintenance. Transparent pricing, zero hidden fees, and certified craft.
+            </p>
+            <div className="pt-2">
+              <Link
+                href="/services"
+                className="inline-flex items-center gap-3 px-8 py-4 rounded-xl font-bold text-sm text-primary-foreground bg-teal-700 hover:bg-teal-800 dark:bg-teal-600 dark:hover:bg-teal-500 shadow-md shadow-teal-700/20 transition-all hover:scale-[1.02] active:scale-[0.98]"
+              >
+                <span>Access Complete Catalog</span>
+                <ArrowRight className="h-4 w-4" />
+              </Link>
+            </div>
           </div>
         </div>
       </section>

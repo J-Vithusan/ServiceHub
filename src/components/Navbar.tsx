@@ -32,15 +32,15 @@ export function Navbar() {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2.5 group">
-            <div className="h-10 w-10 rounded-xl bg-gradient-to-tr from-teal-800 to-teal-500 text-white flex items-center justify-center shadow-md shadow-teal-700/20 group-hover:scale-105 transition-transform duration-200">
+            <div className="h-10 w-10 rounded-xl bg-teal-700 dark:bg-teal-600 text-white flex items-center justify-center shadow-md shadow-teal-700/20 group-hover:scale-105 transition-transform duration-200">
               <Wrench className="h-5 w-5" />
             </div>
             <div className="flex flex-col">
-              <span className="text-xl font-black tracking-tight text-slate-900 dark:text-white flex items-center gap-0.5">
-                Service<span className="text-amber-600 dark:text-amber-400">Hub</span>
+              <span className="text-xl font-black tracking-tight text-foreground flex items-center gap-0.5">
+                Service<span className="text-teal-700 dark:text-teal-400">Hub</span>
               </span>
-              <span className="text-[10px] text-slate-500 dark:text-slate-400 font-semibold tracking-wider uppercase -mt-1">
-                Verified Pro Network
+              <span className="mono-index text-[9px] text-muted-foreground tracking-widest uppercase -mt-0.5">
+                DISPATCH PROTOCOL
               </span>
             </div>
           </Link>

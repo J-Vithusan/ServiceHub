@@ -4,38 +4,38 @@ import { Wrench, Shield, Clock, Award, Heart } from 'lucide-react';
 
 export function Footer() {
   return (
-    <footer className="border-t border-slate-200 dark:border-slate-800/80 bg-white dark:bg-[#070b0c] text-slate-600 dark:text-slate-400 mt-auto transition-colors duration-200">
+    <footer className="border-t border-border bg-card text-muted-foreground mt-auto transition-colors duration-200">
       {/* Trust Badges Bar */}
-      <div className="border-b border-slate-200 dark:border-slate-800/80 py-8 bg-slate-50/60 dark:bg-slate-900/30">
+      <div className="border-b border-border py-8 bg-secondary/50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-center md:text-left">
             <div className="flex items-center justify-center md:justify-start gap-4">
-              <div className="h-12 w-12 rounded-xl bg-teal-50 border border-teal-200/80 text-teal-700 dark:bg-teal-500/10 dark:border-teal-500/20 dark:text-teal-400 flex items-center justify-center shrink-0">
+              <div className="h-12 w-12 rounded-xl bg-teal-500/10 border border-teal-500/20 text-teal-700 dark:text-teal-400 flex items-center justify-center shrink-0">
                 <Shield className="h-6 w-6" />
               </div>
               <div>
-                <h4 className="text-sm font-bold text-slate-900 dark:text-white">100% Verified Specialists</h4>
-                <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">Every contractor is licensed, background-checked & insured.</p>
+                <h4 className="text-sm font-bold text-foreground">100% Verified Specialists</h4>
+                <p className="text-xs text-muted-foreground mt-0.5">Every contractor is licensed, background-checked & insured.</p>
               </div>
             </div>
 
             <div className="flex items-center justify-center md:justify-start gap-4">
-              <div className="h-12 w-12 rounded-xl bg-amber-50 border border-amber-200/80 text-amber-700 dark:bg-amber-500/10 dark:border-amber-500/20 dark:text-amber-400 flex items-center justify-center shrink-0">
+              <div className="h-12 w-12 rounded-xl bg-teal-500/10 border border-teal-500/20 text-teal-700 dark:text-teal-400 flex items-center justify-center shrink-0">
                 <Clock className="h-6 w-6" />
               </div>
               <div>
-                <h4 className="text-sm font-bold text-slate-900 dark:text-white">Real-Time Dispatch</h4>
-                <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">Immediate slot confirmation with arrival window guarantees.</p>
+                <h4 className="text-sm font-bold text-foreground">Real-Time Dispatch</h4>
+                <p className="text-xs text-muted-foreground mt-0.5">Immediate slot confirmation with arrival window guarantees.</p>
               </div>
             </div>
 
             <div className="flex items-center justify-center md:justify-start gap-4">
-              <div className="h-12 w-12 rounded-xl bg-emerald-50 border border-emerald-200/80 text-emerald-700 dark:bg-emerald-500/10 dark:border-emerald-500/20 dark:text-emerald-400 flex items-center justify-center shrink-0">
+              <div className="h-12 w-12 rounded-xl bg-teal-500/10 border border-teal-500/20 text-teal-700 dark:text-teal-400 flex items-center justify-center shrink-0">
                 <Award className="h-6 w-6" />
               </div>
               <div>
-                <h4 className="text-sm font-bold text-slate-900 dark:text-white">Craftsmanship Guarantee</h4>
-                <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">30-day warranty on all completed domestic & trade services.</p>
+                <h4 className="text-sm font-bold text-foreground">Craftsmanship Guarantee</h4>
+                <p className="text-xs text-muted-foreground mt-0.5">30-day warranty on all completed domestic & trade services.</p>
               </div>
             </div>
           </div>
@@ -48,19 +48,19 @@ export function Footer() {
           {/* Brand Info */}
           <div className="space-y-4 md:col-span-1">
             <Link href="/" className="flex items-center gap-2.5">
-              <div className="h-9 w-9 rounded-xl bg-gradient-to-tr from-teal-800 to-teal-500 flex items-center justify-center text-white shadow-sm">
+              <div className="h-9 w-9 rounded-xl bg-teal-700 dark:bg-teal-600 flex items-center justify-center text-white shadow-sm">
                 <Wrench className="h-4 w-4" />
               </div>
-              <span className="text-xl font-black text-slate-900 dark:text-white">
-                Service<span className="text-amber-600 dark:text-amber-400">Hub</span>
+              <span className="text-xl font-black text-foreground">
+                Service<span className="text-teal-700 dark:text-teal-400">Hub</span>
               </span>
             </Link>
-            <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
-              The high-trust marketplace connecting homeowners and facility managers with top-tier licensed trade specialists.
+            <p className="text-xs text-muted-foreground leading-relaxed">
+              The high-trust marketplace connecting property managers and homeowners with certified trade specialists.
             </p>
-            <div className="flex items-center gap-2 text-xs text-slate-500 dark:text-slate-400 pt-1">
+            <div className="flex items-center gap-2 text-xs text-muted-foreground pt-1">
               <span className="h-2 w-2 rounded-full bg-teal-500 animate-pulse" />
-              <span>Platform Active & Dispatched</span>
+              <span className="mono-index text-[10px]">DISPATCH NETWORK LIVE</span>
             </div>
           </div>
 
